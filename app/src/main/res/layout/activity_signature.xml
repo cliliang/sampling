@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signature"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cdv.sampling.activity.SignatureActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_client_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="1"
+            app:left_title="经办人"
+            app:maxLength="20" />
+
+        <RelativeLayout
+            style="@style/SignatureTitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/listitem_basebg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="经办人1签字"
+                android:textColor="@color/title_hint_text" />
+
+            <ImageView
+                android:id="@+id/iv_clear_beijianqianzi"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_icon_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_signature" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_beijianren_qianming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp" />
+
+        <RelativeLayout
+            style="@style/SignatureTitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/listitem_basebg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="经办人2签字"
+                android:textColor="@color/title_hint_text" />
+
+            <ImageView
+                android:id="@+id/iv_clear_beijianriqi"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_icon_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_signature" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_caiyangren_qianzi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_test_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="1"
+            app:left_title="抽检人"
+            app:maxLength="20" />
+
+        <RelativeLayout
+            style="@style/SignatureTitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/listitem_basebg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="抽检人1签字"
+                android:textColor="@color/title_hint_text" />
+
+            <ImageView
+                android:id="@+id/iv_clear_caiyangrne"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_icon_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_signature" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_caiyangren_qianzi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp" />
+
+        <RelativeLayout
+            style="@style/SignatureTitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/listitem_basebg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="抽检人2签字"
+                android:textColor="@color/title_hint_text" />
+
+            <ImageView
+                android:id="@+id/iv_clear_caiyangriqi"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_icon_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_signature" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_beijianren_qianming2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

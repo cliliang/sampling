@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<TextView android:layout_marginTop="16dip" android:textSize="19sp"
+		      android:layout_width="fill_parent" 
+		      android:layout_height="wrap_content"
+		      android:id="@+id/ListenerLabelMessage" 
+		      android:layout_marginLeft="40dip" 
+		      android:text="@string/print_status_msg_ready"></TextView>
+
+			
+	<Button
+		android:id="@+id/ListenerButtonSelectParams"
+		android:text="@string/print_status_button_save"
+		android:visibility="invisible"
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+	</Button>
+			
+</LinearLayout>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="jianCedan"
+            type="com.cdv.sampling.bean.JianCeDan" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_cell_no_top_border"
+                android:lineSpacingExtra="10dp"
+                android:padding="@dimen/tb_left_padding"
+                android:text="受检企业或个人仔细阅读以下内容，确认然后签字：本次抽样始终在本人陪同下完成，并承认以上填写信息的真实性、合法性、本监督抽样单所列的样品系按照官方抽样程序取得的，该样品具有代表性、真实性和公正性。"
+                android:textColor="@color/tb_remark"
+                android:textSize="@dimen/tb_remark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tb_sign_column_height"
+                android:background="@drawable/shape_cell_no_top_border"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/tb_left_padding"
+                        android:text="受检单位经手人："
+                        android:textColor="@color/tb_column_title"
+                        android:textSize="@dimen/tb_column_title" />
+
+                    <TextView
+                        android:id="@+id/tv_client_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/item_title_color"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/iv_shoujianren"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_marginLeft="10dp"
+                        android:adjustViewBounds="true" />
+
+                    <ImageView
+                        android:id="@+id/iv_shoujianriqi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:adjustViewBounds="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/tb_left_padding"
+                        android:text="抽样单位经手人："
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tb_left_padding"
+                    android:text='抽样单位地址:北京市大兴区生物医药产业基地祥瑞大街19号'
+                    android:textColor="@color/tb_main_title"
+                    android:textSize="@dimen/tb_main_title" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tb_sign_column_height"
+                android:background="@drawable/shape_cell_no_top_border">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tb_left_padding"
+                    android:text="受检单位（盖章）："
+                    android:textColor="@color/tb_column_title"
+                    android:textSize="@dimen/tb_column_title" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/tb_left_padding"
+                        android:text="抽样单位（盖章）：北京市兽药监察所"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tb_left_padding"
+                    android:text="抽样单位电话：010-60271591，010-60271583"
+                    android:textColor="@color/tb_main_title"
+                    android:textSize="@dimen/tb_main_title" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_cell_no_top_border"
+                android:lineSpacingExtra="10dp"
+                android:padding="@dimen/tb_left_padding"
+                android:text="注：此单一式二份，第一联抽样单位留存，第二联交受检单位"
+                android:textColor="@color/tb_remark"
+                android:textSize="@dimen/tb_remark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/iv_danwei"
+                    android:layout_width="236dp"
+                    android:layout_height="236dp"
+                    android:layout_marginRight="140dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/danweiqianzhang" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="10dp"
+                android:padding="@dimen/tb_left_padding"
+                android:text="受检企业或个人仔细阅读以下内容，确认然后签字：本次抽样始终在本人陪同下完成，并承认以上填写信息的真实性、合法性、本监督抽样单所列的样品系按照官方抽样程序取得的，该样品具有代表性、真实性和公正性。"
+                android:textColor="@color/tb_remark"
+                android:textSize="@dimen/tb_remark"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tb_sign_column_height"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/tb_left_padding"
+                        android:text="受检单位经手人："
+                        android:textColor="@color/tb_column_title"
+                        android:textSize="@dimen/tb_column_title" />
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/tb_left_padding"
+                        android:text="抽样单位经手人："
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/tv_test_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/item_title_color"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/iv_caiyangren"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:background="@color/transparent"
+                        android:adjustViewBounds="true" />
+
+                    <ImageView
+                        android:id="@+id/iv_caiyangriqi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:layout_margin="2dp"
+                        android:adjustViewBounds="true" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tb_left_padding"
+                    android:textColor="@color/tb_main_title"
+                    android:textSize="@dimen/tb_main_title"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tb_sign_column_height"
+                android:background="@drawable/shape_cell_no_top_border"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tb_left_padding"
+                    android:text="受检单位（盖章）："
+                    android:textColor="@color/tb_column_title"
+                    android:textSize="@dimen/tb_column_title" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/tb_left_padding"
+                        android:text="抽样单位（盖章）：北京市兽药监察所"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tb_left_padding"
+                    android:text="抽样单位电话：010-60271591，010-60271583"
+                    android:textColor="@color/tb_main_title"
+                    android:textSize="@dimen/tb_main_title" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_cell_no_top_border"
+                android:lineSpacingExtra="10dp"
+                android:padding="@dimen/tb_left_padding"
+                android:text="注：此单一式二份，第一联抽样单位留存，第二联交受检单位"
+                android:textColor="@color/tb_remark"
+                android:textSize="@dimen/tb_remark"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

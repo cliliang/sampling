@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">EPSample</string>
+	<string name="file_select_label_image">Print Photo</string>
+	<string name="file_select_button_select">Select</string>
+	<string name="file_select_button_setting">Setting</string>
+	<string name="file_select_button_exit">Exit</string>
+	<string name="print_setting_label_printer_name">Printer name:</string>
+	<string name="print_setting_label_printer_address">Printer ip address</string>
+	<string name="print_setting_label_paper_type">Paper type</string>
+	<string name="print_setting_label_paper_size">Paper size</string>
+	<string name="print_setting_label_print_quality">Print quality</string>
+	<string name="print_setting_label_color_mode">Color mode</string>
+	<string name="print_setting_label_band_width">Band width</string>
+	<string name="print_setting_label_log">Log file path</string>
+	<string name="print_setting_label_printer_model_name">Model Name</string>
+	<string name="print_setting_label_printer_mac">MAC</string>		
+	<string name="print_setting_label_timeout">Timeout</string>						
+	<string name="print_setting_label_borderless">Borderless</string>
+	<string name="print_setting_label_paper_direction">Paper Direction</string>
+	<string name="print_setting_label_bid_print">Bi-Direction</string>	
+	<string name="print_setting_label_total_pages">Total Pages</string>
+	<string name="print_setting_label_duplex_interval">Copies</string>	
+	<string name="print_setting_label_platen_gap">Platen Gap</string>	
+	<string name="print_setting_label_paper_path">Paper Path</string>		
+	<string name="print_setting_label_duplex_print">Duplex Print</string>
+	<string name="print_setting_label_duplex_reverse_backpage">Duplex Reverse Backpage</string>	
+	<string name="print_setting_label_binding_margin">Binding Margin</string>	
+	<string name="print_setting_label_photo_seal_offset">Photo Seal Offset</string>		
+	<string name="print_setting_label_color_space">Color Space</string>	
+	<string name="print_setting_label_fast_copy">Fast Copy</string>		
+	<string name="print_setting_label_top">Top</string>
+	<string name="print_setting_label_left">Left</string>
+
+	<string name="print_setting_caption_selpapersize">Select paper size</string>
+	<string name="print_setting_caption_selpapertype">Select paper type</string>
+	<string name="print_setting_caption_selprinterquality">Select print quality</string>
+	<string name="print_setting_caption_selcolormode">Select color mode</string>
+	<string name="print_setting_caption_selborderless">Select borderless</string>
+	<string name="print_setting_caption_selpaper_direction">Select Paper Direction</string>
+	<string name="print_setting_caption_selpaper_path">Select Paper Path</string>
+	<string name="print_setting_caption_selduplex_print">Select Duplex Print</string>
+	<string name="print_setting_caption_selduplex_reverse_backpage">Select Duplex Reverse Backpage</string>
+	<string name="print_setting_caption_selbid_print">Select Bi-Direction</string>	
+	<string name="print_setting_caption_selplaten_gap">Select Platen Gap</string>	
+	<string name="print_setting_caption_selcolor_space">Color Space</string>	
+	<string name="print_setting_caption_selfast_copy">Select Fast Copy</string>		
+	
+	<string name="print_setting_button_search">Search</string>
+	<string name="print_setting_button_menu">Menu</string>	
+	<string name="print_setting_button_update">Update</string>	
+	<string name="print_setting_button_print_page">Print</string>
+	<string name="print_setting_button_return">Return</string>
+	<string name="print_status_msg_ready">Print Preparing...</string>
+	<string name="print_status_msg_print">Printing...</string>
+	<string name="print_status_msg_error">Error</string>
+	<string name="print_status_button_start_print">Start print</string>
+	<string name="print_status_button_finish_print">Finish</string>
+	<string name="print_status_button_return">Return</string>
+	<string name="print_status_button_save">Save</string>	
+	<string name="band_size_default">64</string>
+	
+	<string name="listener_text_pattern1">#1</string>
+	<string name="listener_text_pattern2">#2</string>
+	<string name="listener_text_pattern3">#3</string>
+	<string name="listener_text_pattern4">#4</string>
+	<string name="listener_text_pattern5">#5</string>
+	<string name="listener_text_pattern6">#6</string>
+				
+	<string-array name="entries_paper_type">
+		<item>Plain Paper /Bright White Paper</item>
+		<item>Photo Paper</item>
+	</string-array>
+	
+	<string-array name="entries_paper_size">
+		<item>A4 210 x 297 mm</item>
+	</string-array>
+	
+	<string-array name="entries_print_quality">
+		<item>Draft</item>
+		<item>Normal</item>
+		<item>High</item>
+	</string-array>
+	
+	<string name="print_status_msg_pntret_success">打印成功！</string>
+	<string name="print_status_msg_pntret_stopbutton">Printer StopButton</string>
+	<string name="print_status_msg_pntret_usercancel">User Cancel</string>
+	<string name="print_status_msg_pntret_printererror">打印过程中出错！</string>
+	<string name="print_status_msg_pntret_printerror">打印出错！</string>
+	<string name="print_status_msg_pntret_printing">Printing...</string>
+	<string name="print_status_msg_measure_result">Measure Result :  </string>
+	<string name="print_status_msg_measure_begin">Measuring...</string>
+	<string name="print_setting_msg_searching">Searching...</string>
+	<string name="print_setting_msg_search_notfound">Not Found</string>
+	<string name="print_setting_select_image_print">please select a image to print.</string>
+	<string name="print_setting_searching_printer_use">Please searching for a printer to use.</string>
+	<string name="print_setting_printstatus_busy">Please wait while other task is printing.</string>
+	<string name="print_setting_printstatus_dialog_ok">OK</string>
+	<string name="image_file_select_label">EPSample - Image File Select </string>
+	<string name="print_setting_label">Print Settings</string>
+	<string name="print_status_label">Print Status</string>
+	<string name="search_status_label">Search Printer</string>
+	<string name="print_setting_loginput_lengthlimit">Please input the log path with string length limit of 64</string>
+	<string name="print_setting_loginput_extension">Please input the log path with extension .txt</string>
+	<string name="print_setting_loginput_keyword">Please input log path with the string /sdcard/</string>
+	<string name="print_setting_bandinput_null">Please input band value</string>
+	<string name="text_searching">搜索中...</string>
+	<string name="text_start_search_printer">开始搜索打印机</string>
+	<string name="text_search_print_done">搜索打印机完毕</string>
+	<string name="text_please_select_printer">请选择打印机</string>
+	<string name="toast_no_printer">没有找到可用的打印机</string>
+	<string name="text_save">保存</string>
+	<string name="toast_save_settings_success">设置保存成功</string>
+	<string name="text_print">打印</string>
+	<string name="text_settings">设置</string>
+</resources>

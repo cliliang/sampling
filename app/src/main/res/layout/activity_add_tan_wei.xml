@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cdv.sampling.activity.AddTanWeiActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="10"
+            app:left_title="名称"
+            app:maxLength="200" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_business_license"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="4"
+            app:left_title="营业执照"
+            app:maxLength="50" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="10"
+            app:left_title="地址"
+            app:maxLength="200" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_postcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_phone"
+            app:inputMaxLine="1"
+            app:left_title="邮政编码"
+            app:maxLength="6" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_contact_people"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="1"
+            app:left_title="联系人"
+            app:maxLength="20" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_contact_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_phone"
+            app:inputMaxLine="1"
+            app:left_title="联系电话"
+            app:maxLength="15" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_contact_fax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_phone"
+            app:inputMaxLine="1"
+            app:left_title="传真"
+            app:maxLength="20" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_company_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="1"
+            app:left_title="邮箱"
+            app:maxLength="20" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ccc"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp"
+            android:paddingLeft="@dimen/item_left_padding"
+            android:paddingRight="@dimen/item_left_padding"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="摊位信息" />
+
+            <CheckBox
+                android:id="@+id/cb_have_booth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/panel_booth_area"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_booth_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="1"
+                app:left_title="摊位号"
+                app:maxLength="20" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_booth_contact_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="1"
+                app:left_title="联系人"
+                app:maxLength="20" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_booth_contact_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_phone"
+                app:inputMaxLine="1"
+                app:left_title="联系电话"
+                app:maxLength="15" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_booth_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="1"
+                app:left_title="邮箱"
+                app:maxLength="20" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

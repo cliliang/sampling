@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/activity_add_veterinary_drug"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <com.cdv.sampling.widget.ItemIndicator
+            android:id="@+id/item_add_company"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:background="@drawable/listitem_basebg"
+            app:dividerType="bottom"
+            app:item_showText="受检单位"
+            app:showIcon="@drawable/icon_company" />
+
+        <LinearLayout
+            android:id="@+id/panel_company_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/listitem_basebg"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/item_left_padding"
+                android:paddingRight="@dimen/item_left_padding"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_license_title"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="营业执照"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_license"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_license_title"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/item_left_padding"
+                android:paddingRight="@dimen/item_left_padding"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:id="@+id/tv_address_title"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="地址"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_address_title"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/item_left_padding"
+                android:paddingRight="@dimen/item_left_padding"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:id="@+id/tv_post_code_title"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="邮政编码"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_postCode"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_post_code_title"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/item_left_padding"
+                android:paddingRight="@dimen/item_left_padding"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:id="@+id/tv_contact_people_title"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="联系人"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_contact_people"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_contact_people_title"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/item_left_padding"
+                android:paddingRight="@dimen/item_left_padding"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:id="@+id/tv_fax_title"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="传真"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_fax"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_fax_title"
+                    android:textColor="@color/company_content_color"
+                    android:textSize="@dimen/company_content_size" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color" />
+        </LinearLayout>
+
+        <com.cdv.sampling.widget.ItemIndicator
+            android:id="@+id/item_add_sampling"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:background="@drawable/listitem_basebg"
+            app:accessIcon="@drawable/ic_menu_add"
+            app:dividerType="bottom"
+            app:item_showText="样品"
+            app:showIcon="@drawable/icon_sample" />
+
+        <LinearLayout
+            android:id="@+id/panel_sample_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <com.cdv.sampling.widget.ItemIndicator
+            android:id="@+id/item_add_signature"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:background="@drawable/listitem_basebg"
+            app:dividerType="bottom"
+            app:item_showText="签字"
+            app:showIcon="@drawable/icon_signature" />
+        <LinearLayout
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_beijianren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp" />
+
+            <ImageView
+                android:id="@+id/iv_caiyangren_qianzi2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp" />
+
+            <ImageView
+                android:id="@+id/iv_caiyangren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp" />
+
+            <ImageView
+                android:id="@+id/iv_beijianren_qianming2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

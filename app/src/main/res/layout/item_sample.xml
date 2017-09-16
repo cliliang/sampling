@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.cdv.sampling.widget.PreferenceRightDetailView
+        android:id="@+id/item_yangpinhao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        app:show_titleSize="14dp"
+        app:show_contentSize="14dp"
+        app:show_accessStyle="none"
+        app:show_divider_location="none"
+        app:show_title="样品编号"
+        app:ptd_background="@color/transparent"
+        app:show_titleColor="@color/item_content_color">
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/shape_point"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:minHeight="20dp"
+            android:minWidth="20dp"
+            android:padding="2dp"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+    </com.cdv.sampling.widget.PreferenceRightDetailView>
+
+    <com.cdv.sampling.widget.PreferenceRightDetailView
+        android:id="@+id/item_yangpinmingcheng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        app:show_titleSize="14dp"
+        android:layout_marginTop="-12dp"
+        app:show_contentSize="14dp"
+        app:show_accessStyle="none"
+        app:show_divider_location="none"
+        app:show_title="样品名称"
+        app:ptd_background="@color/transparent"
+        app:show_titleColor="@color/item_content_color" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color" />
+</LinearLayout>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/SettingScrollView"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 用紙タイプ -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelPaperType"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:text="@string/print_setting_label_paper_type"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerPaperType"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selpapertype"></Spinner>
+
+        </RelativeLayout>
+
+        <!-- 用紙サイズ -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelPaperSize"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:text="@string/print_setting_label_paper_size"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerPaperSize"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selpapersize"></Spinner>
+        </RelativeLayout>
+
+        <!-- 印刷品質 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelPrintQuality"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:text="@string/print_setting_label_print_quality"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerQuality"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selprinterquality"></Spinner>
+
+        </RelativeLayout>
+
+        <!-- カラーモード -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelColorMode"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:text="@string/print_setting_label_color_mode"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerColorMode"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selcolormode"></Spinner>
+
+        </RelativeLayout>
+
+        <!-- ふちなし -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelBorderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/print_setting_label_borderless"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerBorderless"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selborderless"></Spinner>
+
+        </RelativeLayout>
+
+        <!-- 用紙パス -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelPaperPath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/print_setting_label_paper_path"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerPaperPath"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selpaper_path"></Spinner>
+
+        </RelativeLayout>
+
+        <!-- 双方向印刷 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelBidPrint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/print_setting_label_bid_print"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerBidPrint"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selbid_print"></Spinner>
+
+        </RelativeLayout>
+
+        <!-- 両面印刷 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelDuplexPrint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/print_setting_label_duplex_print"
+                android:textSize="19sp"></TextView>
+
+            <Spinner
+                android:id="@+id/SettingSpinnerDuplexPrint"
+                android:layout_width="200dip"
+                android:layout_height="48dip"
+                android:layout_alignParentRight="true"
+                android:prompt="@string/print_setting_caption_selduplex_print"></Spinner>
+
+        </RelativeLayout>
+
+        <!--  印刷部数 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/SettingLabelCopies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/print_setting_label_total_pages"
+                android:textSize="19sp"></TextView>
+
+            <EditText
+                android:id="@+id/SettingEditTotalPages"
+                android:layout_width="200dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:inputType="number"
+                android:singleLine="true"></EditText>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/saveBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_save"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InputLayout">
+        <attr name="maxLength" format="integer" />
+        <attr name="textHint" format="string" />
+        <attr name="scanEnable" format="boolean" />
+        <attr name="left_title" format="string" />
+        <attr name="inputMaxLine" format="integer"/>
+        <attr name="inputText" format="string"/>
+        <attr name="cdv_inputType" format="integer">
+            <enum name="cdv_text" value="0"></enum>
+            <enum name="cdv_number" value="1"></enum>
+            <enum name="cdv_email" value="2"></enum>
+            <enum name="cdv_phone" value="3"></enum>
+        </attr>
+        <attr name="validator" format="string"></attr>
+    </declare-styleable>
+    <declare-styleable name="item_indicator">
+
+        <attr name="item_showText" format="string" />
+
+        <attr name="showTextSize" format="dimension"></attr>
+
+        <attr name="showTextColor" format="color"></attr>
+        <attr name="item_content" format="string" />
+
+        <attr name="show_content_textSize" format="dimension"></attr>
+
+        <attr name="show_content_textColor" format="color"></attr>
+
+        <attr name="showIcon" format="reference"></attr>
+        <attr name="accessIcon" format="reference"></attr>
+
+        <attr name="dividerType" format="integer">
+            <enum name="none" value="0"></enum>
+            <enum name="top" value="1"></enum>
+            <enum name="bottom" value="2"></enum>
+            <enum name="both" value="3"></enum>
+        </attr>
+
+        <attr name="hasArrow" format="integer">
+            <enum name="none" value="0"></enum>
+            <enum name="arrow" value="1"></enum>
+        </attr>
+
+    </declare-styleable>
+    <declare-styleable name="PreferenceRightDetailView">
+        <!-- 标题文本内容 -->
+        <attr name="show_title" format="string" />
+        <!-- 内容文本文字内容 -->
+        <attr name="show_content" format="string" />
+        <!-- 标题文本字体大小 -->
+        <attr name="show_titleSize" format="dimension"></attr>
+        <!-- 内容文本文字大小 -->
+        <attr name="show_contentSize" format="dimension"></attr>
+        <!-- 标题文本颜色 -->
+        <attr name="show_titleColor" format="color"></attr>
+        <attr name="ptd_background" format="color|reference"></attr>
+        <!-- 内容文本颜色 -->
+        <attr name="show_contentColor" format="color"></attr>
+        <!-- 分割线的位置 -->
+        <attr name="show_divider_location" format="integer">
+            <enum name="none" value="0"></enum>
+            <enum name="top" value="1"></enum>
+            <enum name="bottom" value="2"></enum>
+            <enum name="both" value="3"></enum>
+        </attr>
+        <!-- 设置右侧类型, 默认为arrow, none为没有图标 -->
+        <attr name="show_accessStyle" format="integer">
+            <enum name="none" value="0"></enum>
+            <enum name="arrow" value="1"></enum>
+        </attr>
+        <!-- 定制右侧的小图标, 可以选择不设置 -->
+        <attr name="show_accessImage" format="reference"></attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rb_clear_type"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_not_finished_form"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginLeft="16dp"
+            android:checked="true"
+            android:paddingLeft="6dp"
+            android:text="未完成表单"
+            android:textColor="@color/item_title_color"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_color" />
+
+        <RadioButton
+            android:id="@+id/rb_archived_form"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginLeft="16dp"
+            android:paddingLeft="6dp"
+            android:text="已归档表单"
+            android:textColor="@color/item_title_color"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_color" />
+
+
+        <RadioButton
+            android:id="@+id/rb_all_form"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginLeft="16dp"
+            android:paddingLeft="6dp"
+            android:text="全部表单"
+            android:textColor="@color/item_title_color"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_color" />
+
+
+        <RadioButton
+            android:id="@+id/rb_all_data"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginLeft="16dp"
+            android:paddingLeft="6dp"
+            android:text="全部数据"
+            android:textColor="@color/item_title_color"
+            android:textSize="16dp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/dialog_confirm_tv"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_theme_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/confirm"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

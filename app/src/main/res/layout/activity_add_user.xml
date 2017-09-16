@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_user"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.cdv.sampling.activity.AddUserActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/divider_color" />
+
+    <com.cdv.sampling.widget.InputLayout
+        android:id="@+id/account_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        app:left_title="用户名"
+        app:maxLength="20"
+        app:textHint="用户名" />
+
+    <com.cdv.sampling.widget.InputLayout
+        android:id="@+id/username_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        app:left_title="姓名"
+        app:maxLength="20"
+        app:textHint="姓名" />
+
+    <com.cdv.sampling.widget.InputLayout
+        android:id="@+id/phone_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        app:cdv_inputType="cdv_phone"
+        app:left_title="电话"
+        app:maxLength="20"
+        app:textHint="电话号码" />
+
+    <com.cdv.sampling.widget.InputLayout
+        android:id="@+id/pwd_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        app:left_title="密码"
+        app:maxLength="20"
+        app:textHint="密码" />
+</LinearLayout>

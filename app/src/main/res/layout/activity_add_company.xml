@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cdv.sampling.activity.AddCompanyActivity">
+
+    <LinearLayout
+        android:id="@+id/panel_bottom_area"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/tab_save"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_area_sel"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_save" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:includeFontPadding="false"
+                android:text="保存"
+                android:textColor="@color/tab_text_col"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_clear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_area_sel"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_clear_form" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:includeFontPadding="false"
+                android:text="清空"
+                android:textColor="@color/tab_text_col"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_area_sel"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_search" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:includeFontPadding="false"
+                android:text="查找"
+                android:textColor="@color/tab_text_col"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_scan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_area_sel"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_scan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:includeFontPadding="false"
+                android:text="扫描"
+                android:textColor="@color/tab_text_col"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/panel_bottom_area">
+
+        <LinearLayout
+            android:id="@+id/activity_add_company"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_company_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="10"
+                app:left_title="名称"
+                app:maxLength="40" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_business_license"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="4"
+                app:left_title="营业执照"
+                app:maxLength="40" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="10"
+                app:left_title="地址"
+                app:maxLength="80" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_postcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_phone"
+                app:inputMaxLine="1"
+                app:left_title="邮政编码"
+                app:maxLength="6" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_contact_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="1"
+                app:left_title="联系人"
+                app:maxLength="20" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_contact_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_phone"
+                app:inputMaxLine="1"
+                app:left_title="联系电话"
+                app:maxLength="15" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_contact_fax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_phone"
+                app:inputMaxLine="1"
+                app:left_title="传真"
+                app:maxLength="20" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="1"
+                app:left_title="邮箱"
+                app:maxLength="40" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

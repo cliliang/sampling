@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_paint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/panel_booth_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_clear"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="@color/title_hint_bg"
+            android:src="@drawable/icon_delete_signature"
+            android:stateListAnimator="@null" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="36dp"
+            android:background="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btn_undo"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="@color/title_hint_bg"
+            android:src="@drawable/icon_undo"
+            android:stateListAnimator="@null" />
+    </LinearLayout>
+
+    <com.lht.paintview.PaintView
+        android:id="@+id/view_paint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/panel_booth_area" />
+
+
+</RelativeLayout>

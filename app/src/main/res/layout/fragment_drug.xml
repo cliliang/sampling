@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_add_sampling"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+        <LinearLayout
+            style="@style/TitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/title_icon_height"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_sample" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="样品基本信息"
+                android:textColor="@color/title_hint_text" />
+        </LinearLayout>
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_sampling_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="1"
+            app:left_title="样品编号"
+            app:maxLength="30"
+            app:scanEnable="true" />
+        <com.cdv.sampling.widget.PreferenceRightDetailView
+            android:id="@+id/item_sampling_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            app:show_divider_location="bottom"
+            app:show_title="样品名称" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_sampling_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="1"
+            app:left_title="抽样数量"
+            app:maxLength="30" />
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_sampling_base_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="1"
+            app:left_title="样品基数"
+            app:maxLength="30" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/listitem_basebg"
+            android:minHeight="@dimen/item_height"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:id="@+id/tv_jianyi_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="检疫证号"
+                android:textColor="@color/item_title_color"
+                android:textSize="16dp" />
+
+            <Spinner
+                android:id="@+id/spinner_jianyizhenghao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/tv_jianyi_title"
+                android:minWidth="80dp" />
+
+            <EditText
+                android:id="@+id/et_jianyizhhenghao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/spinner_jianyizhenghao"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/item_height"
+                android:textColor="@color/item_title_color"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/TitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_icon_height"
+                android:src="@drawable/icon_tanwei" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="摊位信息" />
+
+            <CheckBox
+                android:id="@+id/cb_have_booth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/panel_booth_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_booth_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="1"
+                app:left_title="摊位号"
+                app:maxLength="20" />
+
+            <com.cdv.sampling.widget.InputLayout
+                android:id="@+id/input_booth_contact_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cdv_inputType="cdv_text"
+                app:inputMaxLine="1"
+                app:left_title="摊主姓名"
+                app:maxLength="20" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_tanzhu_qianming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true" />
+
+        <LinearLayout
+            style="@style/TitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/title_icon_height"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_income_company" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="样品来源"
+                android:textColor="@color/title_hint_text" />
+        </LinearLayout>
+
+        <com.cdv.sampling.widget.PreferenceRightDetailView
+            android:id="@+id/item_jinhuofangshi"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            app:show_divider_location="bottom"
+            app:show_title="进货方式" />
+
+        <com.cdv.sampling.widget.PreferenceRightDetailView
+            android:id="@+id/item_shengchan_danwei"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            app:show_divider_location="bottom"
+            app:show_title="进货单位" />
+
+        <LinearLayout
+            style="@style/TitleHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/title_icon_height"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_remark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="备注"
+                android:textColor="@color/title_hint_text" />
+        </LinearLayout>
+
+        <com.cdv.sampling.widget.InputLayout
+            android:id="@+id/input_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cdv_inputType="cdv_text"
+            app:inputMaxLine="8"
+            app:left_title="备注"
+            app:maxLength="200" />
+
+        <com.cdv.sampling.widget.AttachContainerView
+            android:id="@+id/view_attach_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

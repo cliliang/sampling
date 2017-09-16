@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="shouYao"
+            type="com.cdv.sampling.bean.ShouYaoCanLiuSample" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_cell_no_top_border"
+        android:orientation="horizontal"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp">
+
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.code}" />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.name}" />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.number}" />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.base}" />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/shape_cell_right_border"
+            android:text='@{shouYao.jinHuoDescription}' />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.checkCode}" />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.tanWeiCode}" />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.tanWeiUser}" />
+
+        <TextView
+            style="@style/FormItemStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/shape_cell_right_border"
+            android:text="@{shouYao.description}" />
+
+    </LinearLayout>
+</layout>

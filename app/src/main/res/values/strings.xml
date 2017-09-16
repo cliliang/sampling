@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">样品监察</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="search_title">搜索</string>
+    <string name="search_hint">请输入查询条件</string>
+    <string name="search_label">查询</string>
+    <string name="add_title">添加</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="scan">扫描</string>
+    <string name="title_activity_add_user">AddUserActivity</string>
+    <string name="error_tip_no_network">网络异常，请检查网络。</string>
+    <string name="title_activity_add_veterinary_drug">AddVeterinaryDrugActivity</string>
+    <string name="title_activity_add_company">AddCompanyActivity</string>
+    <string name="title_activity_add_sampling">AddSamplingActivity</string>
+    <string name="title_activity_signature">SignatureActivity</string>
+    <string name="title_activity_paint">PaintActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_tan_wei">AddTanWeiActivity</string>
+    <string name="title_activity_search_company">SearchCompanyActivity</string>
+    <string name="title_activity_app_type_list">AppTypeListActivity</string>
+    <string name="title_activity_add_app_type">AddAppTypeActivity</string>
+    <string name="title_activity_form_list">FormListActivity</string>
+    <string name="title_activity_form_detail">FormDetailActivity</string>
+    <string name="txt_client_unit_name">受检单位名称：%s</string>
+    <string name="txt_contact_phone">联系电话：%s</string>
+    <string name="txt_contact_fax">传真：%s</string>
+    <string name="txt_sample_date">抽样时间：%s</string>
+    <string name="title_activity_data_manager">DataManagerActivity</string>
+    <string name="title_activity_laucher">样品监察</string>
+    <string name="title_activity_modify_pwd">ModifyPwdActivity</string>
+
+</resources>

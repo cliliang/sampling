@@ -1,0 +1,23 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="tb_main_title">16dp</dimen>
+    <dimen name="tb_column_title">16dp</dimen>
+    <dimen name="tb_column_content">16dp</dimen>
+    <dimen name="tb_highlight_content">16dp</dimen>
+    <dimen name="tb_remark">16dp</dimen>
+    <dimen name="tb_column_height">44dp</dimen>
+    <dimen name="tb_sign_column_height">56dp</dimen>
+    <dimen name="tb_double_column_height">66dp</dimen>
+    <dimen name="tb_left_padding">16dp</dimen>
+    <dimen name="tb_default_line_space">4dp</dimen>
+    <dimen name="main_menu_height">90dp</dimen>
+    <dimen name="item_top_padding">12dp</dimen>
+    <dimen name="item_left_padding">16dp</dimen>
+    <dimen name="item_height">48dp</dimen>
+    <dimen name="company_content_size">12dp</dimen>
+    <color name="tab_bottom_bg">#faffffff</color>
+    <dimen name="title_icon_height">20dp</dimen>
+</resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cdv.sampling">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name=".SamplingApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/SamplingAppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/SamplingAppTheme" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:launchMode="singleTask"
+            android:theme="@style/SamplingAppTheme"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".activity.UserListActivity"
+            android:theme="@style/SamplingAppTheme">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".activity.AddUserActivity"
+            android:label="@string/title_activity_add_user" />
+        <activity
+            android:name=".activity.AddFormActivity"
+            android:label="@string/title_activity_add_veterinary_drug" />
+        <activity
+            android:name=".activity.AddCompanyActivity"
+            android:label="@string/title_activity_add_company" />
+        <activity
+            android:name=".activity.AddSamplingActivity"
+            android:label="@string/title_activity_add_sampling" />
+        <activity
+            android:name=".activity.SignatureActivity"
+            android:label="@string/title_activity_signature" />
+        <activity
+            android:name=".activity.PaintActivity"
+            android:label="@string/title_activity_paint"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.SearchCompanyActivity"
+            android:label="@string/title_activity_search_company"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AppTypeListActivity"
+            android:label="@string/title_activity_app_type_list" />
+        <activity
+            android:name=".activity.AddAppTypeActivity"
+            android:label="@string/title_activity_add_app_type" />
+        <activity
+            android:name=".activity.FormListActivity"
+            android:label="@string/title_activity_form_list" />
+        <activity
+            android:name=".activity.FormDetailActivity"
+            android:label="@string/title_activity_form_detail" />
+        <activity
+            android:name=".activity.DataManagerActivity"
+            android:label="@string/title_activity_data_manager" />
+        <activity
+            android:name=".activity.PrintSettingsActivity"
+            android:label="@string/title_activity_data_manager" />
+        <activity
+            android:name=".activity.PrintActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
+        <activity
+            android:name=".activity.LaucherActivity"
+            android:label="@string/title_activity_laucher"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ImageShowActivity"
+            android:label="@string/title_activity_data_manager"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ModifyPwdActivity"
+            android:label="@string/title_activity_modify_pwd" />
+        <activity
+            android:name=".activity.ScanActivity"
+            android:theme="@style/base_dialog" />
+        <activity android:name=".activity.IPConfigActivity"></activity>
+    </application>
+
+</manifest>

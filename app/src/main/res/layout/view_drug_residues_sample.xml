@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="jianCedan"
+            type="com.cdv.sampling.bean.JianCeDan" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:minHeight="1240dp"
+        android:minWidth="1754dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:id="@+id/panel_form_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tb_column_height"
+                    android:background="@drawable/shape_cell_border"
+                    android:gravity="center"
+                    android:text="北京市动物源性产品残留抽样监测抽样单"
+                    android:textColor="@color/tb_main_title"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_cell_no_top_border">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text="受检单位名称："
+                            android:textColor="@color/tb_column_title"
+                            android:textSize="@dimen/tb_column_title" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text='@{jianCedan.clientUnit.name}'
+                            android:textColor="@color/tb_column_title" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text="地址："
+                            android:textColor="@color/tb_column_title"
+                            android:textSize="@dimen/tb_column_title" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text='@{jianCedan.clientUnit.address}'
+                            android:textColor="@color/tb_column_title" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text="邮编："
+                            android:textColor="@color/tb_column_title"
+                            android:textSize="@dimen/tb_column_title" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text='@{jianCedan.clientUnit.zip}'
+                            android:textColor="@color/tb_column_title" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_cell_no_top_border">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text="联系人："
+                            android:textColor="@color/tb_column_title"
+                            android:textSize="@dimen/tb_column_title" />
+
+                        <TextView
+                            android:id="@+id/tv_contact_people"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text='@{jianCedan.clientUnit.contactUser}'
+                            android:textColor="@color/tb_column_title" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text="联系电话："
+                            android:textColor="@color/tb_column_title"
+                            android:textSize="@dimen/tb_column_title" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text='@{jianCedan.clientUnit.telephone}'
+                            android:textColor="@color/tb_column_title" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text="传真："
+                            android:textColor="@color/tb_column_title"
+                            android:textSize="@dimen/tb_column_title" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text='@{jianCedan.clientUnit.fax}'
+                            android:textColor="@color/tb_column_title" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text="抽样时间："
+                            android:textColor="@color/tb_column_title"
+                            android:textSize="@dimen/tb_column_title" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:text='@{jianCedan.showCreateTime}'
+                            android:textColor="@color/tb_column_title" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tb_double_column_height"
+                    android:background="@drawable/shape_cell_no_top_border"
+                    android:paddingBottom="1dp"
+                    android:paddingLeft="1dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:background="@drawable/shape_cell_right_border"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/tb_default_line_space"
+                        android:text="样品\n编号"
+                        android:textColor="@color/tb_column_title"
+                        android:textSize="@dimen/tb_column_title" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:background="@drawable/shape_cell_right_border"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/tb_default_line_space"
+                        android:text="样品\n名称"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_cell_right_border"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/tb_default_line_space"
+                        android:text="抽样\n数量"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_cell_right_border"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/tb_default_line_space"
+                        android:text="样品\n基数"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@drawable/shape_cell_right_border"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/tb_default_line_space"
+                        android:text="生产进货单位情况\n（样品来源/联系人/电话）"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:background="@drawable/shape_cell_right_border"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/tb_default_line_space"
+                        android:text="检疫证号"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/shape_cell_right_border"
+                            android:gravity="center"
+                            android:lineSpacingExtra="@dimen/tb_default_line_space"
+                            android:text="批发、农贸市场所抽取样品的摊位及摊主姓名"
+                            android:textColor="@color/tb_main_title"
+                            android:textSize="@dimen/tb_main_title" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_cell_right_border"
+                                android:gravity="center"
+                                android:lineSpacingExtra="@dimen/tb_default_line_space"
+                                android:text="摊位号"
+                                android:textColor="@color/tb_main_title"
+                                android:textSize="@dimen/tb_main_title" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_cell_right_border"
+                                android:gravity="center"
+                                android:lineSpacingExtra="@dimen/tb_default_line_space"
+                                android:text="摊主"
+                                android:textColor="@color/tb_main_title"
+                                android:textSize="@dimen/tb_main_title" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:background="@drawable/shape_cell_right_border"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/tb_default_line_space"
+                        android:text="备注"
+                        android:textColor="@color/tb_main_title"
+                        android:textSize="@dimen/tb_main_title" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/panel_sample_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <include
+                    layout="@layout/view_signature_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
