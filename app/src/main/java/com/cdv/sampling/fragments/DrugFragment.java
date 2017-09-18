@@ -88,7 +88,7 @@ public class DrugFragment extends SampleOperateFragment {
     @BindView(R.id.et_jianyizhhenghao)
     EditText etJianYiZhengHao;
 
-    private static final String[] JIAN_YI_ARR = new String[]{"（动物A）", "（动物B）", "（产品A）", "（产品B）"};
+    private static final String[] JIAN_YI_ARR = new String[]{"（动物A）", "（动物B）", "（产品A）", "（产品B）", "（无）"};
 
     private ShouYaoCanLiuSample sample;
     private ClientUnit clientUnit;

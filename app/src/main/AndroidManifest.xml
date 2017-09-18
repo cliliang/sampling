@@ -23,15 +23,18 @@
         android:theme="@style/SamplingAppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/SamplingAppTheme" />
+            android:theme="@style/SamplingAppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/SamplingAppTheme"
             android:windowSoftInputMode="adjustResize|stateVisible" />
         <activity
             android:name=".activity.UserListActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SamplingAppTheme">
             <meta-data
                 android:name="android.app.searchable"
@@ -39,18 +42,22 @@
         </activity>
         <activity
             android:name=".activity.AddUserActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_add_user" />
-        <activity
-            android:name=".activity.AddFormActivity"
-            android:label="@string/title_activity_add_veterinary_drug" />
+        <!--<activity-->
+            <!--android:name=".activity.AddFormActivity"-->
+            <!--android:label="@string/title_activity_add_veterinary_drug" />-->
         <activity
             android:name=".activity.AddCompanyActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_add_company" />
         <activity
             android:name=".activity.AddSamplingActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_add_sampling" />
         <activity
             android:name=".activity.SignatureActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_signature" />
         <activity
             android:name=".activity.PaintActivity"
@@ -62,21 +69,27 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AppTypeListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_app_type_list" />
         <activity
             android:name=".activity.AddAppTypeActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_add_app_type" />
         <activity
             android:name=".activity.FormListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_form_list" />
         <activity
             android:name=".activity.FormDetailActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_form_detail" />
         <activity
             android:name=".activity.DataManagerActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_data_manager" />
         <activity
             android:name=".activity.PrintSettingsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_data_manager" />
         <activity
             android:name=".activity.PrintActivity"
@@ -100,11 +113,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ModifyPwdActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_modify_pwd" />
         <activity
             android:name=".activity.ScanActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/base_dialog" />
-        <activity android:name=".activity.IPConfigActivity"></activity>
+        <activity android:name=".activity.IPConfigActivity"/>
     </application>
 
 </manifest>

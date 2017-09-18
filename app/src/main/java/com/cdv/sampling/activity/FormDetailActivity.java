@@ -7,8 +7,11 @@ import android.databinding.ViewDataBinding;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -41,6 +44,7 @@ import com.cdv.sampling.utils.AppUtils;
 import com.cdv.sampling.utils.ListUtils;
 import com.cdv.sampling.utils.MD5Utils;
 import com.cdv.sampling.utils.ScreenUtils;
+import com.cdv.sampling.utils.ToastUtils;
 import com.cdv.sampling.utils.UIUtils;
 import com.cdv.sampling.utils.io.FileUtils;
 import com.cdv.sampling.widget.EPocketAlertDialog;
@@ -56,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -423,10 +428,28 @@ public class FormDetailActivity extends BaseActivity {
                                 panelFormImage.setVisibility(View.VISIBLE);
                                 ImageView ivForm = new ImageView(FormDetailActivity.this);
                                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                                params.bottomMargin = UIUtils.convertDpToPixel(16, FormDetailActivity.this);
+//                                params.bottomMargin = UIUtils.convertDpToPixel(16, FormDetailActivity.this);
                                 ivForm.setLayoutParams(params);
                                 ivForm.setAdjustViewBounds(true);
-                                panelFormImageParent.addView(ivForm);
+
+                                LinearLayout container = (LinearLayout) LayoutInflater.from(FormDetailActivity.this).inflate(R.layout.container_image_layout, null);
+                                container.addView(ivForm);
+                                container.findViewById(R.id.form_print_icon).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String imagePath = appFile.getFilePath();
+                                        try {
+                                            File file = new File(imagePath);
+                                            Intent i = new Intent(Intent.ACTION_VIEW);
+                                            i.setPackage("com.dynamixsoftware.printershare");
+                                            i.setDataAndType(Uri.fromFile(file),"image/jpeg");
+                                            startActivity(i);
+                                        }catch (Exception e){
+                                            ToastUtils.shortToast(FormDetailActivity.this, "出现错误，请重新生成");
+                                        }
+                                    }
+                                });
+                                panelFormImageParent.addView(container);
                                 ivForm.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -695,8 +718,9 @@ public class FormDetailActivity extends BaseActivity {
         if (ListUtils.isEmpty(formImageList)) {
             return;
         }
-        Intent starter = new Intent(this, PrintSettingsActivity.class);
-        startActivityForResult(starter, REQUEST_CODE_PRINT_SETTINGS);
+        ToastUtils.shortToast(FormDetailActivity.this, "请点击表单右上方打印按钮，完成打印");
+//        Intent starter = new Intent(this, PrintSettingsActivity.class);
+//        startActivityForResult(starter, REQUEST_CODE_PRINT_SETTINGS);
     }
 
     private ArrayList<String> getFormImageList() {
@@ -999,6 +1023,7 @@ public class FormDetailActivity extends BaseActivity {
                 });
     }
 
+    //兽药产品质量监督抽样单
     private Observable<List<View>> getZhiLiangChouYangViewList() {
         return Observable.just(jianCeDan).map(new Func1<JianCeDan, List<ZhiLiangChouYang>>() {
             @Override
@@ -1070,6 +1095,7 @@ public class FormDetailActivity extends BaseActivity {
         });
     }
 
+    //兽药产品质量抽样核实单
     private Observable<List<View>> getYangPinHeshiViewList() {
         return Observable.just(jianCeDan).map(new Func1<JianCeDan, List<YangPinHeShi>>() {
             @Override

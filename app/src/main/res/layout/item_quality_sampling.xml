@@ -20,7 +20,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="110"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.code}" />
 
@@ -28,7 +28,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="275"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.xukeCode}" />
 
@@ -36,7 +36,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="240"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.GMPCode}" />
 
@@ -44,7 +44,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="115"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.gouMaiLeiXing.valueName}" />
 
@@ -52,7 +52,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="310"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.sampleSource.name}" />
 
@@ -60,7 +60,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="115"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.sampleSource.contactUser}" />
 
@@ -68,7 +68,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="140"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.sampleSource.telephone}" />
 
@@ -76,7 +76,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="105"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.jinHuoNumber}" />
 
@@ -84,7 +84,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="130"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.JinHuoTime}" />
 
@@ -92,7 +92,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="130"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{heshi.description}" />
     </LinearLayout>

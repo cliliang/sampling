@@ -20,7 +20,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="110"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.code}" />
 
@@ -28,7 +28,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="195"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.SampleName}" />
 
@@ -36,7 +36,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="160"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.name}" />
 
@@ -44,7 +44,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="150"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.piHao}" />
 
@@ -52,7 +52,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="270"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.piZhunWenHao}" />
 
@@ -60,7 +60,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="180"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.sampleGuiGe}" />
 
@@ -68,7 +68,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="120"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.number}" />
 
@@ -76,7 +76,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="110"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.kuCun}" />
 
@@ -84,7 +84,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="310"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.shengChanUnit.name}" />
 
@@ -92,7 +92,7 @@
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="100"
             android:background="@drawable/shape_cell_right_border"
             android:text="@{chouyang.description}" />
     </LinearLayout>
