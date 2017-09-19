@@ -1,6 +1,5 @@
 package com.cdv.sampling.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
@@ -22,11 +21,10 @@ import com.cdv.sampling.rxandroid.CommonSubscriber;
 import com.cdv.sampling.utils.ListUtils;
 import com.cdv.sampling.utils.MD5Utils;
 import com.cdv.sampling.utils.io.FileUtils;
+import com.cdv.sampling.utils.io.PicImageLoader;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
-import com.lzy.imagepicker.loader.ImageLoader;
 import com.lzy.imagepicker.ui.ImageGridActivity;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.download.ImageDownloader;
 
 import java.io.File;
@@ -65,41 +63,14 @@ public class AttachContainerView extends LinearLayout implements View.OnClickLis
 
     private void initView(Context context) {
         ImagePicker imagePicker = ImagePicker.getInstance();
-//        imagePicker.setImageLoader(new ImageLoader() {
-//
-//            @Override
-//            public void displayImage(Activity activity, String path, ImageView imageView, int width, int height) {
-//
-//            }
-//
-//            @Override
-//            public void clearMemoryCache() {
-//
-//            }
-//        });
-        imagePicker.setImageLoader(new ImageLoader() {
-            @Override
-            public void displayImage(Activity activity, String path, ImageView imageView, int width, int height) {
-                com.nostra13.universalimageloader.core.ImageLoader.getInstance().displayImage(ImageDownloader.Scheme.FILE.wrap(path), imageView, new ImageSize(width, height));
-            }
-
-            @Override
-            public void displayImagePreview(Activity activity, String path, ImageView imageView, int width, int height) {
-
-            }
-
-            @Override
-            public void clearMemoryCache() {
-
-            }
-        });
+        imagePicker.setImageLoader(new PicImageLoader());
         //设置图片加载器
         imagePicker.setShowCamera(true);  //显示拍照按钮
         imagePicker.setCrop(false);        //允许裁剪（单选才有效）
         imagePicker.setSaveRectangle(false); //是否按矩形区域保存
         imagePicker.setSelectLimit(9);    //选中数量限制
-        imagePicker.setOutPutX(1400);//保存文件的宽度。单位像素
-        imagePicker.setOutPutY(1400);//保存文件的高度。单位像素
+        imagePicker.setOutPutX(720);//保存文件的宽度。单位像素
+        imagePicker.setOutPutY(1280);//保存文件的高度。单位像素
         this.setOrientation(VERTICAL);
         LayoutInflater.from(context).inflate(R.layout.view_attach_container, this, true);
         ivAddAttach = (ImageView) findViewById(R.id.iv_add_attach);
