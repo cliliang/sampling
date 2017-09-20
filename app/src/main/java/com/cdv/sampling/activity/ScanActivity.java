@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
-import com.m3.scannerlib.Barcode;
-import com.m3.scannerlib.BarcodeListener;
-import com.m3.scannerlib.BarcodeManager;
+import com.m3.sdk.scannerlib.Barcode;
+import com.m3.sdk.scannerlib.BarcodeListener;
+import com.m3.sdk.scannerlib.BarcodeManager;
 
 public class ScanActivity extends Activity {
 
@@ -29,10 +30,16 @@ public class ScanActivity extends Activity {
 
             @Override
             public void onBarcode(String strBarcode) {
+                mBarcode.scanDispose();
                 Intent intent = new Intent();
                 intent.putExtra(EXTRA_SCAN_RESULT, strBarcode);
                 setResult(RESULT_OK, intent);
                 finish();
+            }
+
+            @Override
+            public void onBarcode(String s, String s1) {
+
             }
 
             @Override
