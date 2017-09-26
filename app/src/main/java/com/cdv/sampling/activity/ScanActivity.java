@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 
 import com.m3.sdk.scannerlib.Barcode;
 import com.m3.sdk.scannerlib.BarcodeListener;
