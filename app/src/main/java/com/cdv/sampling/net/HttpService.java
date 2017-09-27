@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class HttpService {
 
-    public static String DEFAULT_HOST_URL = "http://60.205.151.145:8088/";
+    public static String DEFAULT_HOST_URL = "http://60.205.206.76:8088/";
 
     public static int DEFAULT_CACHE_MAX_SECONDS = 14 * 24 * 60 * 60;
     private SamplingHttpApi samplingCommonApi;
