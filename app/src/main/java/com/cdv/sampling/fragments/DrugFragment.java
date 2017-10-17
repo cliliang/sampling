@@ -42,9 +42,11 @@ import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
+import static android.R.id.input;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_CHOUYANG_HUANJIE;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_COMPANY;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_SAMPLE;
+import static java.lang.Integer.parseInt;
 
 
 public class DrugFragment extends SampleOperateFragment {
@@ -343,6 +345,27 @@ public class DrugFragment extends SampleOperateFragment {
         copyShouYao.setDescription(inputRemark.getContent());
         copyShouYao.setName(itemSampleName.getContent().toString());
         copyShouYao.setNumber(inputSamplingCount.getContent());
+
+        String simpleNo = inputSamplingNo.getContent();
+        if (!TextUtils.isEmpty(simpleNo)){
+            String[] split = simpleNo.split("-");
+            String number = split[split.length-1];
+            try {
+                int numberLast = Integer.parseInt(number);
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < split.length; i++){
+                    if (i != split.length - 1){
+                        builder.append(split[i]);
+                        builder.append("-");
+                    }else {
+                        builder.append(String.valueOf(numberLast + 1));
+                    }
+                }
+                copyShouYao.setCode(builder.toString());
+            }catch (NumberFormatException e){
+                e.printStackTrace();
+            }
+        }
 
         if (cbHaveBooth.isChecked()) {
             copyShouYao.setTanWeiCode(inputBoothNumber.getContent());

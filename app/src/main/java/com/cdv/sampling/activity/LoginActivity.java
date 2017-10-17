@@ -41,6 +41,7 @@ public class LoginActivity extends BaseActivity implements ViewTreeObserver.OnGl
     @BindView(R.id.topPanel)
     View topPanel;
 
+
     public static Intent getStartIntent(Context context) {
         return new Intent(context, LoginActivity.class);
     }
@@ -96,6 +97,11 @@ public class LoginActivity extends BaseActivity implements ViewTreeObserver.OnGl
                         showToast(ErrorMessageFactory.create(throwable));
                     }
                 });
+    }
+
+    @OnClick(R.id.tv_ip_config)
+    void configIp(){
+        startActivity(new Intent(LoginActivity.this, IPConfigActivity.class));
     }
 
     @Override
