@@ -156,6 +156,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/iv_danwei"
+                    android:layout_width="236dp"
+                    android:layout_height="236dp"
+                    android:layout_marginRight="140dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/danweiqianzhang" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -187,6 +209,7 @@
                         android:text="受检单位经手人："
                         android:textColor="@color/tb_column_title"
                         android:textSize="@dimen/tb_column_title" />
+
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp" />
@@ -222,16 +245,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
-                        android:background="@color/transparent"
-                        android:adjustViewBounds="true" />
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent" />
 
                     <ImageView
                         android:id="@+id/iv_caiyangriqi"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:background="@color/transparent"
                         android:layout_margin="2dp"
-                        android:adjustViewBounds="true" />
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent" />
                 </LinearLayout>
 
 
@@ -300,28 +323,6 @@
                 android:textColor="@color/tb_remark"
                 android:textSize="@dimen/tb_remark"
                 android:visibility="invisible" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="right">
-
-                <ImageView
-                    android:id="@+id/iv_danwei"
-                    android:layout_width="236dp"
-                    android:layout_height="236dp"
-                    android:layout_marginRight="140dp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/danweiqianzhang" />
-            </LinearLayout>
         </LinearLayout>
     </FrameLayout>
 </layout>

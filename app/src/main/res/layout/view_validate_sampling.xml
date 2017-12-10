@@ -19,8 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
-
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="30dp">
 
             <LinearLayout
                 android:id="@+id/panel_form_area"
@@ -36,7 +37,7 @@
                     android:gravity="center"
                     android:text="北京市兽药产品质量监督抽样单"
                     android:textColor="@color/tb_main_title"
-                    android:textSize="@dimen/tb_main_title" />
+                    android:textSize="20dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -363,6 +364,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_alignBottom="@id/panel_form_area"
                 android:weightSum="3">
 

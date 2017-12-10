@@ -46,6 +46,7 @@ import static android.R.id.input;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_CHOUYANG_HUANJIE;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_COMPANY;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_SAMPLE;
+import static com.tencent.bugly.crashreport.crash.c.n;
 import static java.lang.Integer.parseInt;
 
 
@@ -348,23 +349,8 @@ public class DrugFragment extends SampleOperateFragment {
 
         String simpleNo = inputSamplingNo.getContent();
         if (!TextUtils.isEmpty(simpleNo)){
-            String[] split = simpleNo.split("-");
-            String number = split[split.length-1];
-            try {
-                int numberLast = Integer.parseInt(number);
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < split.length; i++){
-                    if (i != split.length - 1){
-                        builder.append(split[i]);
-                        builder.append("-");
-                    }else {
-                        builder.append(String.valueOf(numberLast + 1));
-                    }
-                }
-                copyShouYao.setCode(builder.toString());
-            }catch (NumberFormatException e){
-                e.printStackTrace();
-            }
+            String s = formatString(simpleNo);
+            copyShouYao.setCode(s);
         }
 
         if (cbHaveBooth.isChecked()) {
@@ -373,5 +359,49 @@ public class DrugFragment extends SampleOperateFragment {
         }
         SamplingApplication.getInstance().setShouYaoCanLiuSample(copyShouYao);
         onSave();
+    }
+
+    private String formatString(String string){
+        int length = string.length();
+        if (isNumberChar(string.charAt(length - 1))){
+            int index = length - 1;
+            for (int i = length - 1; i >= 0; i--){
+                char chartAt = string.charAt(i);
+                if (!isNumberChar(chartAt)){
+                    index = i;
+                    break;
+                }
+            }
+            String subString = string.substring(index + 1, length);
+            try {
+                int subInt = Integer.parseInt(subString);
+                String s1 = string.substring(0, index + 1);
+                String s2 = formatNumber(subString, subInt);
+                return s1 + s2;
+            }catch (NumberFormatException e){
+                e.printStackTrace();
+            }
+        }else {
+            return string + "-01";
+        }
+        return "";
+    }
+
+    private boolean isNumberChar(char c){
+        return c >= '0' && c <= '9';
+    }
+
+    private String formatNumber(String numberString, int oldInt){
+        int lengthOld = numberString.length();
+        int newInt = oldInt + 1;
+        String newString = String.valueOf(newInt);
+        if (newString.length() < lengthOld){
+            do {
+                newString = "0" + newString;
+            }while (newString.length() != lengthOld);
+            return newString;
+        }else {
+            return newString;
+        }
     }
 }
