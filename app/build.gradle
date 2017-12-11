@@ -8,8 +8,8 @@ android {
         applicationId "com.LH.sampling"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 100
-        versionName "1.0.2"
+        versionCode 101
+        versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
