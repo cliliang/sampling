@@ -39,7 +39,7 @@
             android:stateListAnimator="@null" />
     </LinearLayout>
 
-    <com.lht.paintview.PaintView
+    <com.cdv.sampling.widget.MyPaintView
         android:id="@+id/view_paint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -45,7 +45,6 @@ import com.cdv.sampling.utils.ListUtils;
 import com.cdv.sampling.utils.MD5Utils;
 import com.cdv.sampling.utils.ScreenUtils;
 import com.cdv.sampling.utils.ToastUtils;
-import com.cdv.sampling.utils.UIUtils;
 import com.cdv.sampling.utils.io.FileUtils;
 import com.cdv.sampling.widget.EPocketAlertDialog;
 import com.cdv.sampling.widget.ItemIndicator;
@@ -60,7 +59,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -100,6 +98,7 @@ public class FormDetailActivity extends BaseActivity {
 
     private JianCeDan jianCeDan;
     private String sampleType;
+    private ArrayList<String> simpleCodeList = new ArrayList<>();
 
     public static Intent getStartIntent(Context context, long formId) {
         Intent intent = new Intent(context, FormDetailActivity.class);
@@ -122,10 +121,9 @@ public class FormDetailActivity extends BaseActivity {
         long sampleId = getIntent().getLongExtra(EXTRA_FORM_ID, -1);
         if (sampleId <= 0) {
             setMyTitle(AppUtils.getSampleType(sampleType));
-
             jianCeDan = new JianCeDan();
             jianCeDan.setCreateTime(new Date());
-            jianCeDan.setTestUser(UserRepository.getInstance().getCurrentUser().getUserName());
+//            jianCeDan.setTestUser(UserRepository.getInstance().getCurrentUser().getUserName());
             jianCeDan.setEDanType(sampleType);
             jianCeDan.setStatus(JianCeDan.STATUS_INIT);
             jianCeDan.setCreateUser(UserRepository.getInstance().getCurrentUser().getUserName());
@@ -139,7 +137,6 @@ public class FormDetailActivity extends BaseActivity {
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CommonSubscriber<JianCeDan>() {
-
                     @Override
                     public void onNext(JianCeDan o) {
                         super.onNext(o);
@@ -191,12 +188,12 @@ public class FormDetailActivity extends BaseActivity {
             jianCeDan.setClientID(client.getLocalID());
             SamplingApplication.getDaoSession().getJianCeDanDao().save(jianCeDan);
             initClientUnit();
+            checkJinHuoUnit(jianCeDan);
         } else if (requestCode == REQUEST_CODE_ADD_SIGNATURE && resultCode == RESULT_OK) {
             SamplingApplication.getDaoSession().getJianCeDanDao().refresh(jianCeDan);
             initSignatureArea();
         } else if (requestCode == REQUEST_CODE_ADD_SAMPLE && resultCode == RESULT_OK) {
             initSampleArea();
-
             if (SamplingApplication.getInstance().getShouYaoCanLiuSample() != null){
                 showSampling();
             }
@@ -324,7 +321,7 @@ public class FormDetailActivity extends BaseActivity {
                     canLiuSample = new ShouYaoCanLiuSample();
                 }
                 canLiuSample.setFormId(jianCeDan.getID());
-                startActivityForResult(AddSamplingActivity.getStartIntent(this, canLiuSample, jianCeDan.getClientUnit(), jianCeDan.getSampleHuanjie()), REQUEST_CODE_ADD_SAMPLE);
+                startActivityForResult(AddSamplingActivity.getStartIntent(this, canLiuSample, jianCeDan.getClientUnit(), jianCeDan.getSampleHuanjie(), simpleCodeList), REQUEST_CODE_ADD_SAMPLE);
                 break;
             case JianCeDan.DAN_TYPE_SAMPLING_QUALITY:
                 ZhiLiangChouYang zhiLiangChouYang = new ZhiLiangChouYang();
@@ -561,12 +558,15 @@ public class FormDetailActivity extends BaseActivity {
                     @Override
                     public void onNext(ShouYaoCanLiuSample o) {
                         super.onNext(o);
-
                         View view = mInflater.inflate(R.layout.item_sample, null);
                         TextView tvNumber = (TextView) view.findViewById(R.id.tv_number);
                         tvNumber.setText(String.valueOf(number));
                         number++;
                         panelSampleArea.addView(view);
+                        String code = o.getCode();
+                        if (!simpleCodeList.contains(code)){
+                            simpleCodeList.add(code);
+                        }
                         initShouYaoCanLiuView(view, o);
                         if (o.getFinished()) {
                             view.setBackgroundResource(number % 2 == 0 ? R.color.color_sample : R.color.color_sample_even);
@@ -679,7 +679,7 @@ public class FormDetailActivity extends BaseActivity {
                 if (!AppUtils.isEditable(jianCeDan)) {
                     return;
                 }
-                startActivityForResult(AddSamplingActivity.getStartIntent(FormDetailActivity.this, sample, jianCeDan.getClientUnit(), jianCeDan.getSampleHuanjie()), REQUEST_CODE_ADD_SAMPLE);
+                startActivityForResult(AddSamplingActivity.getStartIntent(FormDetailActivity.this, sample, jianCeDan.getClientUnit(), jianCeDan.getSampleHuanjie(), simpleCodeList), REQUEST_CODE_ADD_SAMPLE);
             }
         });
     }
@@ -1034,7 +1034,11 @@ public class FormDetailActivity extends BaseActivity {
                 }
                 for (ZhiLiangChouYang sample : sampleList) {
                     if (!sample.getFinished()) {
-                        throw new FormException("样品编号 " + sample.getCode() + " 的信息未填写完整，不能生成图片");
+//                        String failDes = sample.getFailDes();
+//                        if (!TextUtils.isEmpty(failDes) && failDes.endsWith("，")){
+//                            failDes = failDes.substring(0, failDes.length() - 1);
+//                        }
+                        throw new FormException("样品编号" + sample.getCode() + "的"  + "信息未填写完整，不能生成图片");
                     }
                 }
                 return sampleList;
@@ -1143,6 +1147,50 @@ public class FormDetailActivity extends BaseActivity {
         });
     }
 
+    private void checkJinHuoUnit(JianCeDan _jianCeDan) {
+        if (_jianCeDan == null){
+            return;
+        }
+        List<ShouYaoCanLiuSample> sampleList = SamplingApplication.getDaoSession().getShouYaoCanLiuSampleDao().queryDeep("where Form_ID=?", String.valueOf(_jianCeDan.getID()));
+        if (ListUtils.isEmpty(sampleList)) {
+            return;
+        }
+        for (ShouYaoCanLiuSample sample : sampleList) {
+            checkJinHuoAndReset(sample);
+        }
+    }
+
+    private void checkJinHuoAndReset(final ShouYaoCanLiuSample sample){
+        if (sample == null){
+            return;
+        }
+        if (AppUtils.isHaveId(sample.getGouMaiTypeId())) {
+            Observable.just(sample.getGouMaiTypeId()).map(new Func1<Long, AppTypes>() {
+                @Override
+                public AppTypes call(Long aLong) {
+                    return SamplingApplication.getDaoSession().getAppTypesDao().load(aLong);
+                }
+            }).subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new CommonSubscriber<AppTypes>() {
+                        @Override
+                        public void onNext(AppTypes appType) {
+                            super.onNext(appType);
+                            String value = appType.getValueName();
+                            if ("自产".equals(value) || "自养".equals(value)){
+                                long sampleSourceId = sample.getSampleSourceID();
+                                long formSourceId = jianCeDan.getClientID();
+                                if (sampleSourceId != formSourceId){
+                                    sample.setSampleSource(jianCeDan.getClientUnit());
+                                    sample.setSampleSourceID(jianCeDan.getClientID());
+                                    SamplingApplication.getDaoSession().getShouYaoCanLiuSampleDao().rx().save(sample);
+                                }
+                            }
+                        }
+                    });
+        }
+    }
+
     private Observable<List<View>> getShouYoCanliuViewList() {
         return Observable.just(jianCeDan).map(new Func1<JianCeDan, List<ShouYaoCanLiuSample>>() {
             @Override
@@ -1151,9 +1199,21 @@ public class FormDetailActivity extends BaseActivity {
                 if (ListUtils.isEmpty(sampleList)) {
                     throw new FormException("请先填写表单数据！");
                 }
+                List<String> codes = new ArrayList<>();
                 for (ShouYaoCanLiuSample sample : sampleList) {
+                    String code = sample.getCode();
+                    if (codes.contains(code)){
+                        throw new FormException("样品编号" + code + "有重复");
+                    }else {
+                        codes.add(code);
+                    }
+
                     if (!sample.getFinished()) {
-                        throw new FormException("样品编号 " + sample.getCode() + " 的信息未填写完整，不能生成图片");
+                        String failDes = sample.getFailDes();
+                        if (!TextUtils.isEmpty(failDes) && failDes.endsWith("，")){
+                            failDes = failDes.substring(0, failDes.length() - 1);
+                        }
+                        throw new FormException("样品编号" + sample.getCode() + "的" + failDes + "的信息未填写完整，不能生成图片");
                     }
                 }
                 return sampleList;
@@ -1168,11 +1228,12 @@ public class FormDetailActivity extends BaseActivity {
                 if (!ListUtils.isEmpty(shouYaoCanLiuSamples)) {
                     for (ShouYaoCanLiuSample sample : shouYaoCanLiuSamples) {
                         View canLiuView = mInflater.inflate(R.layout.item_shouyaocanliu, null);
-                        panelSampleArea.addView(canLiuView);
-
                         ViewDataBinding binding = DataBindingUtil.bind(canLiuView);
                         binding.setVariable(BR.shouYao, sample);
                         binding.executePendingBindings();
+                        TextView desView = (TextView) canLiuView.findViewById(R.id.item_shouyao_jinHuo_description);
+                        desView.setText(sample.getJinHuoDescription());
+                        panelSampleArea.addView(canLiuView);
                         int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(Constants.FORM_IMAGE_WIDTH, View.MeasureSpec.AT_MOST);
                         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
                         formView.measure(widthMeasureSpec, heightMeasureSpec);
@@ -1200,6 +1261,9 @@ public class FormDetailActivity extends BaseActivity {
                 }
                 Signature signature = new Signature();
                 String[] idArr = jianCeDan.getFileIDs().split(Constants.FILE_ID_SEPARATOR);
+                if (idArr.length < 3){
+                    throw new FormException("请完成3人签名");
+                }
                 String fileIds = "";
                 int i = 0;
                 for (String idString : idArr) {
@@ -1267,5 +1331,20 @@ public class FormDetailActivity extends BaseActivity {
                 return new FormView(shouYaoSampleView, order);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        try {
+            if (jianCeDan != null){
+                if (jianCeDan.getClientUnit() == null || jianCeDan.getClientID() <= 0){
+                    Log.e("chen", "delete success");
+                    SamplingApplication.getDaoSession().getJianCeDanDao().delete(jianCeDan);
+                }
+            }
+        }catch (Exception e){
+            Log.e("chen", e.getMessage());
+        }
+        super.onDestroy();
     }
 }

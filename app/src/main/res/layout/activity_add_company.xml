@@ -173,7 +173,7 @@
                 app:cdv_inputType="cdv_phone"
                 app:inputMaxLine="1"
                 app:left_title="联系电话"
-                app:maxLength="15" />
+                app:maxLength="50" />
 
             <com.cdv.sampling.widget.InputLayout
                 android:id="@+id/input_contact_fax"

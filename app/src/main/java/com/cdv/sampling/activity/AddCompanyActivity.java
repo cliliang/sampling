@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -22,6 +23,7 @@ import com.cdv.sampling.widget.EPocketAlertDialog;
 import com.cdv.sampling.widget.InputLayout;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -66,6 +68,7 @@ public class AddCompanyActivity extends BaseActivity {
     }
 
     private ClientUnit clientUnit;
+    private String clientName = "", clientAddress = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,8 @@ public class AddCompanyActivity extends BaseActivity {
         setMyTitle("单位");
         clientUnit = (ClientUnit) getIntent().getSerializableExtra(EXTRA_COMPANY_BEAN);
         if (clientUnit != null) {
+            clientName = clientUnit.getName();
+            clientAddress = clientUnit.getAddress();
             inputCompanyName.setContent(clientUnit.getName());
             inputEmail.setContent(clientUnit.getEmail());
             inputAddress.setContent(clientUnit.getAddress());
@@ -98,22 +103,22 @@ public class AddCompanyActivity extends BaseActivity {
 
 
     private void scan() {
-        startActivityForResult(new Intent(this, ScanActivity.class), REQUEST_CODE_SCAN, new PreferenceManager.OnActivityResultListener(){
+        startActivityForResult(new Intent(this, ScanActivity.class), REQUEST_CODE_SCAN, new PreferenceManager.OnActivityResultListener() {
 
             @Override
             public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-                if (REQUEST_CODE_SCAN == requestCode && resultCode == Activity.RESULT_OK){
+                if (REQUEST_CODE_SCAN == requestCode && resultCode == Activity.RESULT_OK) {
                     String str = data.getStringExtra(ScanActivity.EXTRA_SCAN_RESULT);
-                    if (str != null){
+                    if (str != null) {
                         str = str.replace("\n", "").trim();
                         String[] params = str.replace("\n", "").trim().split("，");
-                        for (String item : params){
+                        for (String item : params) {
                             String[] itemParam = item.split("：");
-                            if (itemParam.length != 2){
+                            if (itemParam.length != 2) {
                                 continue;
                             }
-                            for (InputLayout inputLayout : mInputList){
-                                if (inputLayout.getTitle().equals(itemParam[0])){
+                            for (InputLayout inputLayout : mInputList) {
+                                if (inputLayout.getTitle().equals(itemParam[0])) {
                                     inputLayout.setContent(itemParam[1]);
                                     break;
                                 }
@@ -134,9 +139,16 @@ public class AddCompanyActivity extends BaseActivity {
             showToast("单位名称输入不正确！");
             return;
         }
-        if (clientUnit == null) {
+        if (clientUnit != null){
+            String name = inputCompanyName.getContent();
+            String address = inputAddress.getContent();
+            if (!clientName.equals(name) || !clientAddress.equals(address)){
+                clientUnit = new ClientUnit();
+            }
+        }else {
             clientUnit = new ClientUnit();
         }
+
         final XProgressDialog dialog = new XProgressDialog(this, "正在加载..", XProgressDialog.THEME_CIRCLE_PROGRESS);
         dialog.show();
         Observable.just(clientUnit)
@@ -157,6 +169,7 @@ public class AddCompanyActivity extends BaseActivity {
                         clientUnit.setTelephone(inputContactPhone.getContent());
                         clientUnit.setFax(inputContactFax.getContent());
                         clientUnit.setIsInvalidate(0);
+                        clientUnit.setLastModifyTime(new Date());
                         clientUnit.setContactUser(inputContactPeople.getContent());
                         clientUnit.setShortName(PinYinUtil.getSearchKeyForPinyin(inputCompanyName.getContent()));
                         SamplingApplication.getDaoSession().getClientUnitDao().save(clientUnit);
@@ -221,7 +234,7 @@ public class AddCompanyActivity extends BaseActivity {
         currentUnit.setFax(inputContactFax.getContent());
         currentUnit.setContactUser(inputContactPeople.getContent());
         currentUnit.setShortName(PinYinUtil.getSearchKeyForPinyin(inputCompanyName.getContent()));
-        startActivityForResult(SearchCompanyActivity.getStartIntent(this, currentUnit), REQUEST_CODE_SELECTED_BEAN);
+        startActivityForResult(SearchCompanyActivity.getStartIntent(this, currentUnit, inputCompanyName.getContent()), REQUEST_CODE_SELECTED_BEAN);
     }
 
     private void clearForm() {
@@ -243,7 +256,7 @@ public class AddCompanyActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_SELECTED_BEAN){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_SELECTED_BEAN) {
             setResult(RESULT_OK, data);
             finish();
         }

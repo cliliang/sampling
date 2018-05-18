@@ -29,19 +29,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tb_sign_column_height"
-                android:background="@drawable/shape_cell_no_top_border"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="0.7">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:gravity="bottom"
                         android:paddingLeft="@dimen/tb_left_padding"
                         android:text="受检单位经手人："
                         android:textColor="@color/tb_column_title"
@@ -51,9 +51,9 @@
                         android:id="@+id/tv_client_user"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="center_horizontal|bottom"
                         android:textColor="@color/item_title_color"
-                        android:textSize="16dp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -75,12 +75,12 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="0.7">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:gravity="bottom"
                         android:paddingLeft="@dimen/tb_left_padding"
                         android:text="抽样单位经手人："
                         android:textColor="@color/tb_main_title"
@@ -93,7 +93,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
+                    android:gravity="bottom"
                     android:paddingLeft="@dimen/tb_left_padding"
                     android:text='抽样单位地址:北京市大兴区生物医药产业基地祥瑞大街19号'
                     android:textColor="@color/tb_main_title"
@@ -102,13 +102,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tb_sign_column_height"
-                android:background="@drawable/shape_cell_no_top_border">
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/tb_left_padding"
                     android:text="受检单位（盖章）："
@@ -118,7 +118,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="0.7">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -146,9 +146,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_cell_no_top_border"
-                android:lineSpacingExtra="10dp"
-                android:padding="@dimen/tb_left_padding"
+                android:layout_marginLeft="20dp"
+                android:paddingLeft="@dimen/tb_left_padding"
+                android:paddingRight="@dimen/tb_left_padding"
+                android:layout_marginTop="20dp"
                 android:text="注：此单一式二份，第一联抽样单位留存，第二联交受检单位"
                 android:textColor="@color/tb_remark"
                 android:textSize="@dimen/tb_remark" />
@@ -168,8 +169,8 @@
 
                 <ImageView
                     android:id="@+id/iv_danwei"
-                    android:layout_width="236dp"
-                    android:layout_height="236dp"
+                    android:layout_width="257dp"
+                    android:layout_height="257dp"
                     android:layout_marginRight="140dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/danweiqianzhang" />
@@ -193,19 +194,21 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tb_sign_column_height"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="0.7">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:gravity="bottom"
                         android:paddingLeft="@dimen/tb_left_padding"
+                        android:visibility="invisible"
                         android:text="受检单位经手人："
                         android:textColor="@color/tb_column_title"
                         android:textSize="@dimen/tb_column_title" />
@@ -219,12 +222,12 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="0.7">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:gravity="bottom"
                         android:paddingLeft="@dimen/tb_left_padding"
                         android:text="抽样单位经手人："
                         android:textColor="@color/tb_main_title"
@@ -235,9 +238,9 @@
                         android:id="@+id/tv_test_user"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="center_horizontal|bottom"
                         android:textColor="@color/item_title_color"
-                        android:textSize="16dp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -257,12 +260,11 @@
                         android:background="@color/transparent" />
                 </LinearLayout>
 
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
+                    android:gravity="bottom"
                     android:paddingLeft="@dimen/tb_left_padding"
                     android:textColor="@color/tb_main_title"
                     android:textSize="@dimen/tb_main_title"
@@ -271,14 +273,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tb_sign_column_height"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/shape_cell_no_top_border"
                 android:visibility="invisible">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/tb_left_padding"
                     android:text="受检单位（盖章）："
@@ -288,7 +291,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="0.7">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -316,9 +319,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_cell_no_top_border"
-                android:lineSpacingExtra="10dp"
-                android:padding="@dimen/tb_left_padding"
+                android:paddingLeft="@dimen/tb_left_padding"
+                android:paddingRight="@dimen/tb_left_padding"
+                android:gravity="bottom"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
                 android:text="注：此单一式二份，第一联抽样单位留存，第二联交受检单位"
                 android:textColor="@color/tb_remark"
                 android:textSize="@dimen/tb_remark"

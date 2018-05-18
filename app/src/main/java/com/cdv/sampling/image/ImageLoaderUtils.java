@@ -41,6 +41,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.ImageDownloader.Scheme;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+import com.nostra13.universalimageloader.utils.DiskCacheUtils;
 
 import java.io.File;
 
@@ -79,14 +80,17 @@ public class ImageLoaderUtils {
 			if (BuildConfig.DEBUG) {
 				config = new ImageLoaderConfiguration.Builder(context)
 						.threadPriority(Thread.NORM_PRIORITY - 2)
-						.diskCacheSize(500 * 1024 * 1024).writeDebugLogs()
+						.diskCacheSize(50 * 1024 * 1024)
+						.writeDebugLogs()
+						.memoryCache(new WeakMemoryCache())
+						.memoryCacheSize(BITMAP_VENDOR_MEMORY_CACHE_SIZE)
 						.imageDecoder(new ImageDecoder(true))
 						.diskCacheFileNameGenerator(new Md5FileNameGenerator())
 						.tasksProcessingOrder(QueueProcessingType.LIFO).build();
 			} else {
 				config = new ImageLoaderConfiguration.Builder(context)
 						.threadPriority(Thread.NORM_PRIORITY - 2)
-						.diskCacheSize(500 * 1024 * 1024)
+						.diskCacheSize(50 * 1024 * 1024)
 						.memoryCache(new WeakMemoryCache())
 						.memoryCacheSize(BITMAP_VENDOR_MEMORY_CACHE_SIZE)
 						.imageDecoder(new ImageDecoder(false))

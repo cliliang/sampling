@@ -19,11 +19,17 @@ import com.cdv.sampling.fragments.SampleOperateFragment;
 import com.cdv.sampling.fragments.SampleVerificationFragment;
 import com.cdv.sampling.widget.EPocketAlertDialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.R.id.list;
+
 public class AddSamplingActivity extends BaseActivity {
 
     public static final String EXTRA_SAMPLE = "EXTRA_SAMPLE";
     public static final String EXTRA_COMPANY = "EXTRA_COMPANY";
     public static final String EXTRA_CHOUYANG_HUANJIE = "EXTRA_CHOUYANG_HUANJIE";
+    public static final String EXTRA_SIMPLE_CODE_LIST = "EXTRA_SIMPLE_CODE_LIST";
 
     public static final int SAMPLING_DRUG = 0;
     public static final int SAMPLING_QUALITY = 1;
@@ -42,11 +48,12 @@ public class AddSamplingActivity extends BaseActivity {
         return intent;
     }
 
-    public static Intent getStartIntent(Context context, ShouYaoCanLiuSample shouYaoCanLiu, ClientUnit clientUnit, AppTypes chouYangHuanJie) {
+    public static Intent getStartIntent(Context context, ShouYaoCanLiuSample shouYaoCanLiu, ClientUnit clientUnit, AppTypes chouYangHuanJie, ArrayList<String> array) {
         Intent intent = new Intent(context, AddSamplingActivity.class);
         intent.putExtra(EXTRA_SAMPLING, shouYaoCanLiu);
         intent.putExtra(EXTRA_COMPANY, clientUnit);
         intent.putExtra(EXTRA_CHOUYANG_HUANJIE, chouYangHuanJie);
+        intent.putStringArrayListExtra(EXTRA_SIMPLE_CODE_LIST, array);
         return intent;
     }
 
@@ -66,6 +73,7 @@ public class AddSamplingActivity extends BaseActivity {
         Object obj = getIntent().getSerializableExtra(EXTRA_SAMPLING);
         ClientUnit clientUnit = (ClientUnit) getIntent().getSerializableExtra(EXTRA_COMPANY);
         AppTypes chouYangHuanjie = (AppTypes) getIntent().getSerializableExtra(EXTRA_CHOUYANG_HUANJIE);
+        ArrayList<String> list = getIntent().getStringArrayListExtra(EXTRA_SIMPLE_CODE_LIST);
         if (obj == null) {
             finish();
             return;
@@ -73,7 +81,7 @@ public class AddSamplingActivity extends BaseActivity {
         fragment = (SampleOperateFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
         if (fragment == null) {
             if (obj instanceof ShouYaoCanLiuSample) {
-                fragment = DrugFragment.newInstance((ShouYaoCanLiuSample) obj, clientUnit, chouYangHuanjie);
+                fragment = DrugFragment.newInstance((ShouYaoCanLiuSample) obj, clientUnit, chouYangHuanjie, list);
             } else if (obj instanceof ZhiLiangChouYang) {
                 fragment = QualitySamplingFragment.newInstance((ZhiLiangChouYang) obj, clientUnit, chouYangHuanjie);
             } else if (obj instanceof YangPinHeShi) {

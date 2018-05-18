@@ -44,6 +44,8 @@ public class ShouYaoCanLiuSample implements Serializable {
     private long GouMaiTypeId;
     private String GouMaiType;
     private boolean finished;
+    private String failDes;
+
     @Transient
     private String jinHuoDescription;
 
@@ -55,10 +57,10 @@ public class ShouYaoCanLiuSample implements Serializable {
     @Generated(hash = 1516857599)
     private transient ShouYaoCanLiuSampleDao myDao;
 
-    @Generated(hash = 70010473)
+    @Generated(hash = 260164313)
     public ShouYaoCanLiuSample(Long localId, String ID, long formId, String Name, String Code, String Number, String Base, String CheckCode, String PiHao, String Description,
             String SampleFileIDs, String TanWeiUserFile, Long TanWeiLocalId, String localFileIds, String ShengChanRiQi, String TanWeiCode, String TanWeiUser,
-            long SampleSourceID, long GouMaiTypeId, String GouMaiType, boolean finished) {
+            long SampleSourceID, long GouMaiTypeId, String GouMaiType, boolean finished, String failDes) {
         this.localId = localId;
         this.ID = ID;
         this.formId = formId;
@@ -80,6 +82,7 @@ public class ShouYaoCanLiuSample implements Serializable {
         this.GouMaiTypeId = GouMaiTypeId;
         this.GouMaiType = GouMaiType;
         this.finished = finished;
+        this.failDes = failDes;
     }
 
     @Generated(hash = 2033872098)
@@ -93,14 +96,51 @@ public class ShouYaoCanLiuSample implements Serializable {
     private transient Long gouMaiLeiXing__resolvedKey;
 
     public String getJinHuoDescription() {
-        if (!TextUtils.isEmpty(jinHuoDescription)){
-            return jinHuoDescription;
-        }
+//        if (!TextUtils.isEmpty(jinHuoDescription)){
+//            return jinHuoDescription;
+//        }
         if (sampleSource != null){
-            jinHuoDescription = gouMaiLeiXing.getValueName() + "/" + sampleSource.getName() + "/" + sampleSource.getContactUser() + "/" + sampleSource.getTelephone();
+//            jinHuoDescription = gouMaiLeiXing.getValueName() + "/" + sampleSource.getName() + "/" + sampleSource.getContactUser() + "/" + sampleSource.getTelephone();
+            if (gouMaiLeiXing.getValueName().equals("自产") || gouMaiLeiXing.getValueName().equals("自养")){
+                jinHuoDescription = gouMaiLeiXing.getValueName();
+            }else if (gouMaiLeiXing.getValueName().equals("-")){
+                jinHuoDescription = getSampleSource(sampleSource);
+            }else {
+                if (!TextUtils.isEmpty(gouMaiLeiXing.getValueName())){
+                    jinHuoDescription = gouMaiLeiXing.getValueName() + "/" + getSampleSource(sampleSource);
+                }else {
+                    jinHuoDescription = getSampleSource(sampleSource);
+                }
+            }
+        }else {
+            jinHuoDescription = "";
         }
         return jinHuoDescription;
     }
+
+    private String getSampleSource(ClientUnit sampleSource){
+        if (sampleSource == null){
+            return "";
+        }
+        StringBuilder builder = new StringBuilder();
+        if (!TextUtils.isEmpty(sampleSource.getName())){
+            builder.append(sampleSource.getName());
+            builder.append("/");
+        }
+        if (!TextUtils.isEmpty(sampleSource.getContactUser())){
+            builder.append(sampleSource.getContactUser());
+            builder.append("/");
+        }
+        if (!TextUtils.isEmpty(sampleSource.getTelephone())){
+            builder.append(sampleSource.getTelephone());
+        }
+        String string = builder.toString();
+        if (!TextUtils.isEmpty(string) && string.endsWith("/")){
+            return string.substring(0, string.length()-1);
+        }
+        return string;
+    }
+
 
     public void setJinHuoDescription(String jinHuoDescription) {
         this.jinHuoDescription = jinHuoDescription;
@@ -372,6 +412,14 @@ public class ShouYaoCanLiuSample implements Serializable {
             throw new DaoException("Entity is detached from DAO context");
         }
         myDao.update(this);
+    }
+
+    public String getFailDes() {
+        return this.failDes;
+    }
+
+    public void setFailDes(String failDes) {
+        this.failDes = failDes;
     }
 
     /** called by internal mechanisms, do not call yourself. */

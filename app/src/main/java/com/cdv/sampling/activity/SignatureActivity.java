@@ -15,6 +15,7 @@ import com.cdv.sampling.bean.AppFiles;
 import com.cdv.sampling.bean.JianCeDan;
 import com.cdv.sampling.constants.Constants;
 import com.cdv.sampling.image.ImageLoaderUtils;
+import com.cdv.sampling.repository.UserRepository;
 import com.cdv.sampling.rxandroid.CommonSubscriber;
 import com.cdv.sampling.utils.AppUtils;
 import com.cdv.sampling.widget.InputLayout;
@@ -70,7 +71,13 @@ public class SignatureActivity extends BaseActivity {
             return;
         }
         inputClientUser.setContent(jianCeDan.getClientUser());
-        inputTestUser.setContent(jianCeDan.getTestUser());
+        String testUser = jianCeDan.getTestUser();
+        if (!TextUtils.isEmpty(testUser)){
+            inputTestUser.setContent(testUser);
+        }else {
+            inputTestUser.setContent(UserRepository.getInstance().getCurrentUser().getUserName() + "，抽检人2");
+        }
+
         String fileIds = jianCeDan.getFileIDs();
         Observable.just(fileIds).flatMap(new Func1<String, Observable<String>>() {
             @Override
@@ -182,7 +189,7 @@ public class SignatureActivity extends BaseActivity {
     }
 
     private void save() {
-        if (!isModified && inputClientUser.getContent().equals(jianCeDan.getClientUser()) && inputTestUser.getContent().equals(jianCeDan.getTestUser())) {
+        if (!isModified && inputClientUser.getContent().equals(jianCeDan.getClientUser()) && inputTestUser.getContent().equals(jianCeDan.getTestUser() + "，抽检人2")) {
             showToast("签字信息未修改！");
             return;
         }
@@ -190,27 +197,63 @@ public class SignatureActivity extends BaseActivity {
             showToast("请输入受检单位经办人！");
             return;
         }
-        if (TextUtils.isEmpty(beiJianRenQianziId)) {
-            showToast("请录入被检人1未签字！");
-            return;
-        }
-        if (TextUtils.isEmpty(caiyangRenQianziId)) {
-            showToast("请录入采样人1签字！");
-            return;
-        }
-        if (TextUtils.isEmpty(caiyangRiqiId)) {
-            showToast("请录入采样人2签字！");
+//        if (TextUtils.isEmpty(beiJianRenQianziId)) {
+//            showToast("请录入被检人1未签字！");
+//            return;
+//        }
+//        if (TextUtils.isEmpty(caiyangRenQianziId)) {
+//            showToast("请录入采样人1签字！");
+//            return;
+//        }
+//        if (TextUtils.isEmpty(caiyangRiqiId)) {
+//            showToast("请录入采样人2签字！");
+//            return;
+//        }
+
+        if (TextUtils.isEmpty(beiJianRenQianziId) && TextUtils.isEmpty(caiyangRenQianziId) && TextUtils.isEmpty(caiyangRiqiId)){
+            showToast("请录入至少一人签字");
             return;
         }
         final XProgressDialog dialog = new XProgressDialog(this, "正在加载..", XProgressDialog.THEME_CIRCLE_PROGRESS);
         dialog.show();
         String fileIds;
         if (TextUtils.isEmpty(beijianRiqiId)) {
-            fileIds = beiJianRenQianziId.concat(Constants.FILE_ID_SEPARATOR)
-                    .concat(caiyangRenQianziId).concat(Constants.FILE_ID_SEPARATOR).concat(caiyangRiqiId);
+//            fileIds = beiJianRenQianziId.concat(Constants.FILE_ID_SEPARATOR)
+//                    .concat(caiyangRenQianziId).concat(Constants.FILE_ID_SEPARATOR).concat(caiyangRiqiId);
+            StringBuilder builder = new StringBuilder();
+            if (!TextUtils.isEmpty(beiJianRenQianziId)){
+                builder.append(beiJianRenQianziId).append(Constants.FILE_ID_SEPARATOR);
+            }
+            if (!TextUtils.isEmpty(caiyangRenQianziId)){
+                builder.append(caiyangRenQianziId).append(Constants.FILE_ID_SEPARATOR);
+            }
+            if (!TextUtils.isEmpty(caiyangRiqiId)){
+                builder.append(caiyangRiqiId);
+            }
+            fileIds = builder.toString();
+            if (!TextUtils.isEmpty(fileIds) && fileIds.endsWith(Constants.FILE_ID_SEPARATOR)){
+                fileIds = fileIds.substring(0, fileIds.length() - 1);
+            }
         } else {
-            fileIds = beiJianRenQianziId.concat(Constants.FILE_ID_SEPARATOR).concat(beijianRiqiId).concat(Constants.FILE_ID_SEPARATOR)
-                    .concat(caiyangRenQianziId).concat(Constants.FILE_ID_SEPARATOR).concat(caiyangRiqiId);
+//            fileIds = beiJianRenQianziId.concat(Constants.FILE_ID_SEPARATOR).concat(beijianRiqiId).concat(Constants.FILE_ID_SEPARATOR)
+//                    .concat(caiyangRenQianziId).concat(Constants.FILE_ID_SEPARATOR).concat(caiyangRiqiId);
+            StringBuilder builder = new StringBuilder();
+            if (!TextUtils.isEmpty(beiJianRenQianziId)){
+                builder.append(beiJianRenQianziId).append(Constants.FILE_ID_SEPARATOR);
+            }
+            if (!TextUtils.isEmpty(beijianRiqiId)){
+                builder.append(beijianRiqiId).append(Constants.FILE_ID_SEPARATOR);
+            }
+            if (!TextUtils.isEmpty(caiyangRenQianziId)){
+                builder.append(caiyangRenQianziId).append(Constants.FILE_ID_SEPARATOR);
+            }
+            if (!TextUtils.isEmpty(caiyangRiqiId)){
+                builder.append(caiyangRiqiId);
+            }
+            fileIds = builder.toString();
+            if (!TextUtils.isEmpty(fileIds) && fileIds.endsWith(Constants.FILE_ID_SEPARATOR)){
+                fileIds = fileIds.substring(0, fileIds.length() - 1);
+            }
         }
         jianCeDan.setClientUser(inputClientUser.getContent());
         jianCeDan.setTestUser(inputTestUser.getContent());

@@ -16,8 +16,9 @@ import com.cdv.sampling.exception.ErrorMessageFactory;
 import com.cdv.sampling.rxandroid.CommonSubscriber;
 import com.cdv.sampling.utils.ImageUtil;
 import com.cdv.sampling.utils.MD5Utils;
+import com.cdv.sampling.utils.ToastUtils;
 import com.cdv.sampling.utils.UIUtils;
-import com.lht.paintview.PaintView;
+import com.cdv.sampling.widget.MyPaintView;
 import com.lht.paintview.pojo.DrawShape;
 
 import java.io.File;
@@ -39,7 +40,7 @@ public class PaintActivity extends BaseActivity {
     private static final String EXTRA_ROOT_PATH = "EXTRA_ROOT_PATH";
 
     @BindView(R.id.view_paint)
-    PaintView viewPaint;
+    MyPaintView viewPaint;
 
     String paintType;
     String rootPath;
@@ -64,13 +65,16 @@ public class PaintActivity extends BaseActivity {
 
     @OnClick(R.id.btn_undo)
     void undo(){
-        viewPaint.undo();
+        if (!viewPaint.undo()){
+            viewPaint.setIsEmpty(true);
+        }
     }
 
     @OnClick(R.id.btn_clear)
     void clear(){
         viewPaint.setDrawShapes(new ArrayList<DrawShape>());
         viewPaint.invalidate();
+        viewPaint.setIsEmpty(true);
     }
 
     @Override
@@ -82,49 +86,53 @@ public class PaintActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.save){
-            final Intent intent = new Intent();
-            Bitmap bitmap = viewPaint.getBitmap(true);
-            Observable.just(bitmap).map(new Func1<Bitmap, String>() {
-                @Override
-                public String call(Bitmap bitmap) {
+            if (viewPaint.isEmpty()){
+                ToastUtils.show(this, "保存失败，请先签名");
+            }else {
+                final Intent intent = new Intent();
+                Bitmap bitmap = viewPaint.getBitmap(true);
+                Observable.just(bitmap).map(new Func1<Bitmap, String>() {
+                    @Override
+                    public String call(Bitmap bitmap) {
 
-                    String imagePath = rootPath + "Paint-" + paintType + ".png";
-                    boolean success = ImageUtil.saveBitmap(bitmap, imagePath, true);
-                    if (!success){
-                        throw new DataFormatException("图片保存失败！");
+                        String imagePath = rootPath + "Paint-" + paintType + ".png";
+                        boolean success = ImageUtil.saveBitmap(bitmap, imagePath, true);
+                        if (!success){
+                            throw new DataFormatException("图片保存失败！");
+                        }
+                        AppFiles files = new AppFiles();
+                        files.setCreateTime(new Date());
+                        files.setTitle(String.valueOf(paintType));
+                        files.setFilePath(imagePath);
+                        files.setFileType("JPEG");
+                        File file = new File(imagePath);
+                        files.setMD5(MD5Utils.calculateMD5(file));
+                        files.setFileSize(String.valueOf(file.length()));
+                        files.setFileType(String.valueOf(paintType));
+                        SamplingApplication.getDaoSession().getAppFilesDao().save(files);
+                        SamplingApplication.getDaoSession().getAppFilesDao().refresh(files);
+                        intent.putExtra(EXTRA_FILE_PATH, imagePath);
+                        return String.valueOf(files.getID());
                     }
-                    AppFiles files = new AppFiles();
-                    files.setCreateTime(new Date());
-                    files.setTitle(String.valueOf(paintType));
-                    files.setFilePath(imagePath);
-                    files.setFileType("JPEG");
-                    File file = new File(imagePath);
-                    files.setMD5(MD5Utils.calculateMD5(file));
-                    files.setFileSize(String.valueOf(file.length()));
-                    files.setFileType(String.valueOf(paintType));
-                    SamplingApplication.getDaoSession().getAppFilesDao().save(files);
-                    SamplingApplication.getDaoSession().getAppFilesDao().refresh(files);
-                    intent.putExtra(EXTRA_FILE_PATH, imagePath);
-                    return String.valueOf(files.getID());
-                }
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new CommonSubscriber<String>(){
+                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new CommonSubscriber<String>(){
 
-                @Override
-                public void onNext(String o) {
-                    super.onNext(o);
-                    showToast("图片保存成功！");
-                    intent.putExtra(EXTRA_FILE_ID, o);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
+                            @Override
+                            public void onNext(String o) {
+                                super.onNext(o);
+                                showToast("图片保存成功！");
+                                intent.putExtra(EXTRA_FILE_ID, o);
+                                setResult(RESULT_OK, intent);
+                                finish();
+                            }
 
-                @Override
-                public void onError(Throwable e) {
-                    super.onError(e);
-                    showToast(ErrorMessageFactory.create(e));
-                }
-            });
+                            @Override
+                            public void onError(Throwable e) {
+                                super.onError(e);
+                                showToast(ErrorMessageFactory.create(e));
+                            }
+                        });
+            }
         }
         return super.onOptionsItemSelected(item);
     }

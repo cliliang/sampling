@@ -57,14 +57,11 @@ public class ZhiLiangChouYang implements Serializable{
     @Generated(hash = 36809175)
     private transient ZhiLiangChouYangDao myDao;
     @Generated(hash = 1758425704)
-    public ZhiLiangChouYang(Long localId, String ID, long formId, String Code,
-            String SampleName, String Name, String PiHao, String PiZhunWenHao,
-            long GouMaiTypeId, String GouMaiType, String SampleGuiGe, String Number,
-            String KuCun, long SampleSourceID, long ShengChanUnitID,
-            String Description, String ShengChanRiQi, String SampleFileIDs,
-            String localFileIds, boolean finished, String JinHuoTime,
-            String JinHuoNumber, String GMPCode, String XukeCode,
-            boolean haveHeshi) {
+    public ZhiLiangChouYang(Long localId, String ID, long formId, String Code, String SampleName, String Name,
+            String PiHao, String PiZhunWenHao, long GouMaiTypeId, String GouMaiType, String SampleGuiGe,
+            String Number, String KuCun, long SampleSourceID, long ShengChanUnitID, String Description,
+            String ShengChanRiQi, String SampleFileIDs, String localFileIds, boolean finished, String JinHuoTime,
+            String JinHuoNumber, String GMPCode, String XukeCode, boolean haveHeshi) {
         this.localId = localId;
         this.ID = ID;
         this.formId = formId;
@@ -214,6 +211,7 @@ public class ZhiLiangChouYang implements Serializable{
     public void setFinished(boolean finished) {
         this.finished = finished;
     }
+
     public String getJinHuoTime() {
         return this.JinHuoTime;
     }

@@ -1,19 +1,20 @@
 package com.cdv.sampling.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 
 import com.cdv.sampling.R;
 import com.cdv.sampling.SamplingApplication;
@@ -32,6 +33,8 @@ import com.cdv.sampling.widget.InputLayout;
 import com.cdv.sampling.widget.PreferenceRightDetailView;
 import com.nostra13.universalimageloader.core.download.ImageDownloader;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
@@ -42,12 +45,10 @@ import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
-import static android.R.id.input;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_CHOUYANG_HUANJIE;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_COMPANY;
 import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_SAMPLE;
-import static com.tencent.bugly.crashreport.crash.c.n;
-import static java.lang.Integer.parseInt;
+import static com.cdv.sampling.activity.AddSamplingActivity.EXTRA_SIMPLE_CODE_LIST;
 
 
 public class DrugFragment extends SampleOperateFragment {
@@ -86,8 +87,6 @@ public class DrugFragment extends SampleOperateFragment {
     @BindView(R.id.view_attach_container)
     AttachContainerView panelAttachContainer;
 
-    @BindView(R.id.spinner_jianyizhenghao)
-    Spinner spinnerJianYiZhengHao;
     @BindView(R.id.et_jianyizhhenghao)
     EditText etJianYiZhengHao;
 
@@ -100,13 +99,15 @@ public class DrugFragment extends SampleOperateFragment {
     private AppTypes chouYangHuanJie;
 
     private ClientUnit defaultClient;
+    private ArrayList<String> codeList;
 
-    public static DrugFragment newInstance(ShouYaoCanLiuSample sample, ClientUnit clientUnit, AppTypes chouYangHuanjie) {
+    public static DrugFragment newInstance(ShouYaoCanLiuSample sample, ClientUnit clientUnit, AppTypes chouYangHuanjie, ArrayList<String> list) {
         Bundle args = new Bundle();
         DrugFragment fragment = new DrugFragment();
         args.putSerializable(EXTRA_SAMPLE, sample);
         args.putSerializable(EXTRA_COMPANY, clientUnit);
         args.putSerializable(EXTRA_CHOUYANG_HUANJIE, chouYangHuanjie);
+        args.putStringArrayList(EXTRA_SIMPLE_CODE_LIST, list);
         fragment.setArguments(args);
         return fragment;
     }
@@ -119,28 +120,35 @@ public class DrugFragment extends SampleOperateFragment {
         chouYangHuanJie = (AppTypes) getArguments().getSerializable(EXTRA_CHOUYANG_HUANJIE);
         sample = (ShouYaoCanLiuSample) getArguments().getSerializable(EXTRA_SAMPLE);
         defaultClient = (ClientUnit) getArguments().getSerializable(EXTRA_COMPANY);
+        codeList = getArguments().getStringArrayList(EXTRA_SIMPLE_CODE_LIST);
 
-        spinnerJianYiZhengHao.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, JIAN_YI_ARR));
-        if (!TextUtils.isEmpty(sample.getCheckCode())) {
-            boolean isFind = false;
-            for (int i = 0; i < JIAN_YI_ARR.length; i++) {
-                if (sample.getCheckCode().contains(JIAN_YI_ARR[i])) {
-                    spinnerJianYiZhengHao.setSelection(i);
-                    etJianYiZhengHao.setText(sample.getCheckCode().substring(JIAN_YI_ARR[i].length()));
-                    isFind = true;
-                    break;
-                }
-            }
-
-            if (!isFind){
-                spinnerJianYiZhengHao.setSelection(JIAN_YI_ARR.length - 1);
-            }
-        }
         inputSamplingBaseCount.setContent(sample.getBase());
         inputRemark.setContent(sample.getDescription());
         inputSamplingNo.setContent(sample.getCode());
         itemSampleName.setContent(sample.getName());
         inputSamplingCount.setContent(sample.getNumber());
+        etJianYiZhengHao.setText(sample.getCheckCode());
+
+        Log.i("chen", "show list:" + codeList.toString());
+
+        if (AppUtils.isHaveId(sample.getGouMaiTypeId())) {
+            Observable.just(sample.getGouMaiTypeId()).map(new Func1<Long, AppTypes>() {
+                @Override
+                public AppTypes call(Long aLong) {
+                    return SamplingApplication.getDaoSession().getAppTypesDao().load(aLong);
+                }
+            }).subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new CommonSubscriber<AppTypes>() {
+                        @Override
+                        public void onNext(AppTypes appType) {
+                            super.onNext(appType);
+                            jinHuoType = appType;
+                            itemJinhuofangshi.setContent(appType.getValueName());
+                        }
+                    });
+        }
+
         if (AppUtils.isHaveId(sample.getSampleSourceID())) {
             Observable.just(sample.getSampleSourceID()).map(new Func1<Long, ClientUnit>() {
                 @Override
@@ -160,24 +168,9 @@ public class DrugFragment extends SampleOperateFragment {
         } else if (chouYangHuanJie != null && "养殖".equals(chouYangHuanJie.getValueName())) {
             clientUnit = defaultClient;
             itemDanwei.setContent(clientUnit.getName());
-        }
-
-        if (AppUtils.isHaveId(sample.getGouMaiTypeId())) {
-            Observable.just(sample.getGouMaiTypeId()).map(new Func1<Long, AppTypes>() {
-                @Override
-                public AppTypes call(Long aLong) {
-                    return SamplingApplication.getDaoSession().getAppTypesDao().load(aLong);
-                }
-            }).subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new CommonSubscriber<AppTypes>() {
-                        @Override
-                        public void onNext(AppTypes appType) {
-                            super.onNext(appType);
-                            jinHuoType = appType;
-                            itemJinhuofangshi.setContent(appType.getValueName());
-                        }
-                    });
+        }else {
+            clientUnit = null;
+            itemDanwei.setContent("");
         }
 
         if (!TextUtils.isEmpty(sample.getTanWeiCode()) || !TextUtils.isEmpty(sample.getTanWeiUser())) {
@@ -212,18 +205,60 @@ public class DrugFragment extends SampleOperateFragment {
         startActivityForResult(AppTypeListActivity.getStartIntent(getContext(), AppTypes.TYPE_YANGPIN_MING), REQUEST_CODE_SELECT_SAMPLE_NAME);
     }
 
+    private void showSameCodeDialog(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle("提示");
+        alertDialog.setMessage("表单编号重复，是否修改");
+        alertDialog.setNegativeButton("否", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (!getActivity().isFinishing()){
+                    dialog.dismiss();
+                }
+                saveData();
+            }
+        });
+        alertDialog.setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (!getActivity().isFinishing()){
+                    dialog.dismiss();
+                }
+            }
+        });
+        alertDialog.show();
+    }
+
     @Override
     public void onSave() {
-
         if (sample == null) {
             sample = new ShouYaoCanLiuSample();
         }
+//        String simpleCode = inputSamplingNo.getContent();
+//        if (codeList != null && codeList.size() > 0 && !TextUtils.isEmpty(simpleCode)){
+//            for (String code : codeList){
+//                if (simpleCode.equals(code)){
+//                    showSameCodeDialog();
+//                    return;
+//                }
+//            }
+//        }
+//        Log.e("chen", "same return ");
+        saveData();
+    }
+
+    private void saveData(){
         boolean isFinished = true;
+        StringBuilder builder = new StringBuilder();
         if (jinHuoType == null) {
+            isFinished = false;
+            builder.append("进货方式，");
         } else {
             sample.setGouMaiTypeId(jinHuoType.getLocalId());
         }
         if (clientUnit == null) {
+            isFinished = false;
+            builder.append("进货单位，");
         } else {
             sample.setSampleSource(clientUnit);
             sample.setSampleSourceID(clientUnit.getLocalID());
@@ -231,6 +266,7 @@ public class DrugFragment extends SampleOperateFragment {
 
         if (TextUtils.isEmpty(itemSampleName.getContent())) {
             isFinished = false;
+            builder.append("样品名称，");
         }
 
         if (TextUtils.isEmpty(inputSamplingNo.getContent())) {
@@ -240,27 +276,29 @@ public class DrugFragment extends SampleOperateFragment {
 
         if (TextUtils.isEmpty(inputSamplingCount.getContent())) {
             isFinished = false;
+            builder.append("抽样数量，");
         }
 
         if (TextUtils.isEmpty(inputSamplingBaseCount.getContent())) {
             isFinished = false;
+            builder.append("样品基数，");
         }
 
         if (TextUtils.isEmpty(etJianYiZhengHao.getText().toString())) {
-            sample.setCheckCode("无");
-        }else{
-            sample.setCheckCode(spinnerJianYiZhengHao.getSelectedItem() + etJianYiZhengHao.getText().toString());
+            isFinished = false;
+            builder.append("检疫证号，");
         }
         sample.setBase(inputSamplingBaseCount.getContent());
         sample.setDescription(inputRemark.getContent());
         sample.setCode(inputSamplingNo.getContent());
         sample.setName(itemSampleName.getContent().toString());
         sample.setNumber(inputSamplingCount.getContent());
+        sample.setCheckCode(etJianYiZhengHao.getText().toString());
 
         if (cbHaveBooth.isChecked()) {
-
             if (TextUtils.isEmpty(inputBoothNumber.getContent())) {
                 isFinished = false;
+                builder.append("摊位号");
             }
             sample.setTanWeiCode(inputBoothNumber.getContent());
             sample.setTanWeiUser(inputBoothContactPeople.getContent());
@@ -268,6 +306,7 @@ public class DrugFragment extends SampleOperateFragment {
         } else {
             sample.setFinished(isFinished);
         }
+        sample.setFailDes(builder.toString());
         Observable<ShouYaoCanLiuSample> observable = SamplingApplication.getDaoSession().getShouYaoCanLiuSampleDao().rx().save(sample);
         Observable.combineLatest(observable, panelAttachContainer.getSelectedFileIds(AppUtils.getFormRootPath(sample.getFormId()), inputSamplingNo.getContent()), new Func2<ShouYaoCanLiuSample, String, ShouYaoCanLiuSample>() {
             @Override
@@ -279,7 +318,6 @@ public class DrugFragment extends SampleOperateFragment {
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CommonSubscriber<ShouYaoCanLiuSample>() {
-
                     @Override
                     public void onNext(ShouYaoCanLiuSample o) {
                         super.onNext(o);
@@ -310,6 +348,9 @@ public class DrugFragment extends SampleOperateFragment {
             if (defaultClient != null && ("自产".equals(jinHuoType.getValueName()) || "自养".equals(jinHuoType.getValueName()))) {
                 clientUnit = defaultClient;
                 itemDanwei.setContent(clientUnit.getName());
+            }else {
+                clientUnit = null;
+                itemDanwei.setContent("");
             }
         } else if (resultCode == Activity.RESULT_OK && REQUEST_CODE_SELECT_SAMPLE_NAME == requestCode) {
             sampleNameType = (AppTypes) data.getSerializableExtra(AppTypeListActivity.RESULT_KEY_SELECTED);
@@ -334,14 +375,10 @@ public class DrugFragment extends SampleOperateFragment {
         }
         if (clientUnit != null) {
             copyShouYao.setSampleSourceID(clientUnit.getLocalID());
-            sample.setSampleSource(clientUnit);
+            copyShouYao.setSampleSource(clientUnit);
         }
 
-        if (!"无".equals(spinnerJianYiZhengHao.getSelectedItem())){
-            copyShouYao.setCheckCode(spinnerJianYiZhengHao.getSelectedItem() + etJianYiZhengHao.getText().toString());
-        }else{
-            copyShouYao.setCheckCode(etJianYiZhengHao.getText().toString());
-        }
+        copyShouYao.setCheckCode(etJianYiZhengHao.getText().toString());
         copyShouYao.setBase(inputSamplingBaseCount.getContent());
         copyShouYao.setDescription(inputRemark.getContent());
         copyShouYao.setName(itemSampleName.getContent().toString());

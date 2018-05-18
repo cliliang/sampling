@@ -63,7 +63,7 @@
             app:left_title="样品基数"
             app:maxLength="30" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/listitem_basebg"
@@ -80,26 +80,17 @@
                 android:textColor="@color/item_title_color"
                 android:textSize="16dp" />
 
-            <Spinner
-                android:id="@+id/spinner_jianyizhenghao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/tv_jianyi_title"
-                android:minWidth="80dp" />
-
             <EditText
                 android:id="@+id/et_jianyizhhenghao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/spinner_jianyizhenghao"
                 android:gravity="center_vertical"
+                android:layout_marginLeft="25dp"
                 android:minHeight="@dimen/item_height"
-                android:textColor="@color/item_title_color"
-                android:textSize="14dp" />
-        </RelativeLayout>
+                android:textColor="#000"
+                android:textSize="16dp" />
+        </LinearLayout>
 
         <LinearLayout
             style="@style/TitleHint"

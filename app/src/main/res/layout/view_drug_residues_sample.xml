@@ -29,32 +29,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
+                <!--android:background="@drawable/shape_cell_border"-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/tb_column_height"
-                    android:background="@drawable/shape_cell_border"
                     android:gravity="center"
                     android:text="北京市动物源性产品兽药残留监测抽样单"
                     android:textColor="@color/tb_main_title"
-                    android:textSize="20dp" />
+                    android:textStyle="bold"
+                    android:textSize="36dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_cell_no_top_border">
+                    android:layout_marginTop="5dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:paddingLeft="36dp"
                             android:text="受检单位名称："
                             android:textColor="@color/tb_column_title"
                             android:textSize="@dimen/tb_column_title" />
@@ -63,6 +65,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.name}'
                             android:textColor="@color/tb_column_title" />
 
@@ -73,7 +76,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:orientation="horizontal">
 
                         <TextView
@@ -88,6 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.address}'
                             android:textColor="@color/tb_column_title" />
 
@@ -113,6 +117,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.zip}'
                             android:textColor="@color/tb_column_title" />
 
@@ -121,13 +126,11 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_cell_no_top_border">
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -135,7 +138,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:paddingLeft="36dp"
                             android:text="联系人："
                             android:textColor="@color/tb_column_title"
                             android:textSize="@dimen/tb_column_title" />
@@ -145,6 +148,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="20sp"
                             android:text='@{jianCedan.clientUnit.contactUser}'
                             android:textColor="@color/tb_column_title" />
 
@@ -153,7 +157,6 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -170,6 +173,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="20sp"
                             android:text='@{jianCedan.clientUnit.telephone}'
                             android:textColor="@color/tb_column_title" />
 
@@ -178,7 +182,6 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -195,6 +198,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="20sp"
                             android:text='@{jianCedan.clientUnit.fax}'
                             android:textColor="@color/tb_column_title" />
 
@@ -203,7 +207,6 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -220,6 +223,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="20sp"
                             android:text='@{jianCedan.showCreateTime}'
                             android:textColor="@color/tb_column_title" />
 
@@ -230,7 +234,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/tb_double_column_height"
-                    android:background="@drawable/shape_cell_no_top_border"
+                    android:background="@drawable/shape_cell_border_1"
+                    android:paddingTop="1dp"
                     android:paddingBottom="1dp"
                     android:paddingLeft="1dp">
 
@@ -315,7 +320,7 @@
                             android:lineSpacingExtra="@dimen/tb_default_line_space"
                             android:text="批发、农贸市场所抽取样品的摊位及摊主姓名"
                             android:textColor="@color/tb_main_title"
-                            android:textSize="@dimen/tb_main_title" />
+                            android:textSize="16sp" />
 
                         <View
                             android:layout_width="match_parent"
@@ -337,7 +342,7 @@
                                 android:lineSpacingExtra="@dimen/tb_default_line_space"
                                 android:text="摊位号"
                                 android:textColor="@color/tb_main_title"
-                                android:textSize="@dimen/tb_main_title" />
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -348,7 +353,7 @@
                                 android:lineSpacingExtra="@dimen/tb_default_line_space"
                                 android:text="摊主"
                                 android:textColor="@color/tb_main_title"
-                                android:textSize="@dimen/tb_main_title" />
+                                android:textSize="16sp" />
                         </LinearLayout>
                     </LinearLayout>
 

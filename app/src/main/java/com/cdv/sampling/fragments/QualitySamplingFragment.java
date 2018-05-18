@@ -218,52 +218,70 @@ public class QualitySamplingFragment extends SampleOperateFragment {
     }
 
     @Override
+    public void onSaveAndCopy() {
+        super.onSaveAndCopy();
+        final ZhiLiangChouYang copyChouYang = new ZhiLiangChouYang();
+
+
+    }
+
+    @Override
     public void onSave() {
         boolean isFinished = true;
+        StringBuilder builder = new StringBuilder();
         if (TextUtils.isEmpty(inputSamplingNo.getContent())) {
             showToast("样品编号不能为空！");
             return;
         }
         if (shengChanClientUnit == null) {
             isFinished = false;
+            builder.append("生产单位，");
         }
         if (TextUtils.isEmpty(inputYangpinpihao.getContent())) {
             isFinished = false;
+            builder.append("样品批号，");
         }
         if (TextUtils.isEmpty(inputShangpinming.getContent())) {
             isFinished = false;
+            builder.append("商品名，");
         }
         if (TextUtils.isEmpty(inputSamplingName.getContent())) {
             isFinished = false;
+            builder.append("样品名称，");
         }
         if (TextUtils.isEmpty(inputYangpinguige.getContent())) {
             isFinished = false;
+            builder.append("样品规格，");
         }
         if (TextUtils.isEmpty(inputKucunshu.getContent())) {
             isFinished = false;
+            builder.append("库存数，");
         }
         if (TextUtils.isEmpty(inputPizhunwenhao.getContent())) {
             isFinished = false;
+            builder.append("批准文号，");
         }
         if (TextUtils.isEmpty(inputChouyangshuliang.getContent())) {
             isFinished = false;
+            builder.append("抽样数量，");
         }
 
         if (zhiLiangChouYang.getHaveHeshi()){
             if (TextUtils.isEmpty(inputGmpzhenghao.getContent())) {
                 isFinished = false;
+                builder.append("兽药GMP证字号，");
             }
             if (TextUtils.isEmpty(inputShengchanxuke.getContent())) {
                 isFinished = false;
-            }
-            if (TextUtils.isEmpty(inputGmpzhenghao.getContent())) {
-                isFinished = false;
+                builder.append("兽药生产证字号，");
             }
             if (TextUtils.isEmpty(inputJinhuoshuliang.getContent())) {
                 isFinished = false;
+                builder.append("进货数量，");
             }
             if (TextUtils.isEmpty(itemJinhuoshijian.getContent())) {
                 isFinished = false;
+                builder.append("进货时间，");
             }
 
             zhiLiangChouYang.setGMPCode(inputGmpzhenghao.getContent());
@@ -273,6 +291,7 @@ public class QualitySamplingFragment extends SampleOperateFragment {
 
             if (jinHuoClientUnit == null) {
                 isFinished = false;
+                builder.append("进货单位，");
             }else{
                 zhiLiangChouYang.setSampleSource(jinHuoClientUnit);
                 zhiLiangChouYang.setSampleSourceID(jinHuoClientUnit.getLocalID());
@@ -280,6 +299,7 @@ public class QualitySamplingFragment extends SampleOperateFragment {
 
             if (jinHuoType == null){
                 isFinished = false;
+                builder.append("进货方式");
             }else{
                 zhiLiangChouYang.setGouMaiType(jinHuoType.getValueName());
                 zhiLiangChouYang.setGouMaiTypeId(jinHuoType.getLocalId());
@@ -301,6 +321,8 @@ public class QualitySamplingFragment extends SampleOperateFragment {
             zhiLiangChouYang.setShengChanUnit(shengChanClientUnit);
         }
         zhiLiangChouYang.setFinished(isFinished);
+//        zhiLiangChouYang.setFailDes(builder.toString());
+
         Observable.combineLatest(SamplingApplication.getDaoSession().getZhiLiangChouYangDao().rx().save(zhiLiangChouYang), panelAttachContainer.getSelectedFileIds(AppUtils.getFormRootPath(zhiLiangChouYang.getFormId()), inputSamplingNo.getContent()), new Func2<ZhiLiangChouYang, String, ZhiLiangChouYang>() {
             @Override
             public ZhiLiangChouYang call(ZhiLiangChouYang zhiLiangChouYang, String fileIds) {
@@ -311,7 +333,6 @@ public class QualitySamplingFragment extends SampleOperateFragment {
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CommonSubscriber<ZhiLiangChouYang>() {
-
                     @Override
                     public void onNext(ZhiLiangChouYang o) {
                         super.onNext(o);

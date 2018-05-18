@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.cdv.sampling.R;
 import com.cdv.sampling.SamplingApplication;
+import com.cdv.sampling.adapter.CommonDataItem;
 import com.cdv.sampling.bean.ClientUnit;
 import com.cdv.sampling.bean.FormBean;
 import com.cdv.sampling.bean.JianCeDan;
@@ -30,6 +31,7 @@ import com.cdv.sampling.widget.DeleteDataDialog;
 import org.greenrobot.greendao.AbstractDao;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -108,6 +110,26 @@ public class DataManagerActivity extends BaseActivity {
                         tvUnArchiveCount.setText(count + "个未上传");
                     }
                 });
+
+//        Observable<List<JianCeDan>> observable = SamplingApplication.getDaoSession().getJianCeDanDao().queryBuilder().orderDesc(JianCeDanDao.Properties.ID).rx().list();
+//        observable.map(new Func1<List<JianCeDan>, List<CommonDataItem>>() {
+//            @Override
+//            public List<CommonDataItem> call(List<JianCeDan> jianCeDen) {
+//                List<CommonDataItem> itemList = new ArrayList<CommonDataItem>();
+//                if (jianCeDen != null){
+//                    tvUnArchiveCount.setText(jianCeDen.size() + "个未上传");
+//                }else {
+//                    tvUnArchiveCount.setText("0个未上传");
+//                }
+//                return itemList;
+//            }
+//        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new CommonSubscriber<List<CommonDataItem>>() {
+//                    @Override
+//                    public void onNext(List<CommonDataItem> o) {
+//                        super.onNext(o);
+//                    }
+//                });
     }
 
     @OnClick({R.id.btn_download, R.id.btn_upload, R.id.btn_clear, R.id.btn_setting})

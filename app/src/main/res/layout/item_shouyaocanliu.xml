@@ -50,6 +50,7 @@
             android:text="@{shouYao.base}" />
 
         <TextView
+            android:id="@+id/item_shouyao_jinHuo_description"
             style="@style/FormItemStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"

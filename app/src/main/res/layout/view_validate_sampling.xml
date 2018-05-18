@@ -35,27 +35,27 @@
                     android:layout_height="@dimen/tb_column_height"
                     android:background="@drawable/shape_cell_border"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:text="北京市兽药产品质量监督抽样单"
                     android:textColor="@color/tb_main_title"
-                    android:textSize="20dp" />
+                    android:textSize="36dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_cell_no_top_border">
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:paddingLeft="36dp"
                             android:text="受检单位名称："
                             android:textColor="@color/tb_column_title"
                             android:textSize="@dimen/tb_column_title" />
@@ -64,6 +64,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.name}'
                             android:textColor="@color/tb_column_title" />
 
@@ -74,7 +75,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:orientation="horizontal">
 
                         <TextView
@@ -89,6 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.address}'
                             android:textColor="@color/tb_column_title" />
 
@@ -114,6 +116,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.zip}'
                             android:textColor="@color/tb_column_title" />
 
@@ -122,13 +125,11 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_cell_no_top_border">
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -136,7 +137,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/tb_left_padding"
+                            android:paddingLeft="36dp"
                             android:text="联系人："
                             android:textColor="@color/tb_column_title"
                             android:textSize="@dimen/tb_column_title" />
@@ -146,6 +147,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.contactUser}'
                             android:textColor="@color/tb_column_title" />
 
@@ -154,7 +156,6 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -171,6 +172,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.telephone}'
                             android:textColor="@color/tb_column_title" />
 
@@ -179,7 +181,6 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -196,6 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.clientUnit.fax}'
                             android:textColor="@color/tb_column_title" />
 
@@ -204,7 +206,6 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -221,6 +222,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/tb_left_padding"
+                            android:textSize="@dimen/tb_column_title"
                             android:text='@{jianCedan.showCreateTime}'
                             android:textColor="@color/tb_column_title" />
 
@@ -231,7 +233,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/tb_double_column_height"
-                    android:background="@drawable/shape_cell_no_top_border"
+                    android:background="@drawable/shape_cell_border_1"
+                    android:paddingTop="1dp"
                     android:paddingBottom="1dp"
                     android:paddingLeft="1dp">
 
@@ -376,8 +379,8 @@
 
                     <ImageView
                         android:id="@+id/iv_danwei"
-                        android:layout_width="236dp"
-                        android:layout_height="236dp"
+                        android:layout_width="257dp"
+                        android:layout_height="257dp"
                         android:layout_marginRight="140dp"
                         android:adjustViewBounds="true"
                         android:src="@drawable/danweiqianzhang" />
