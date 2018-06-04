@@ -213,6 +213,7 @@ public class BaseActivity extends AppCompatActivity {
         }
         mProgressDialog = new XProgressDialog(this, msg, XProgressDialog.THEME_CIRCLE_PROGRESS);
         mProgressDialog.show();
+
     }
 
     public void dismissProgressDialog() {
