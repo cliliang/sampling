@@ -23,7 +23,6 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.ThumbnailUtils;
-import android.support.v4.BuildConfig;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ImageView;
@@ -77,26 +76,15 @@ public class ImageLoaderUtils {
 	public static void initImageLoader(Context context) {
 		if (!ImageLoader.getInstance().isInited()) {
 			ImageLoaderConfiguration config = null;
-			if (BuildConfig.DEBUG) {
-				config = new ImageLoaderConfiguration.Builder(context)
-						.threadPriority(Thread.NORM_PRIORITY - 2)
-						.diskCacheSize(50 * 1024 * 1024)
-						.writeDebugLogs()
-						.memoryCache(new WeakMemoryCache())
-						.memoryCacheSize(BITMAP_VENDOR_MEMORY_CACHE_SIZE)
-						.imageDecoder(new ImageDecoder(true))
-						.diskCacheFileNameGenerator(new Md5FileNameGenerator())
-						.tasksProcessingOrder(QueueProcessingType.LIFO).build();
-			} else {
-				config = new ImageLoaderConfiguration.Builder(context)
-						.threadPriority(Thread.NORM_PRIORITY - 2)
-						.diskCacheSize(50 * 1024 * 1024)
-						.memoryCache(new WeakMemoryCache())
-						.memoryCacheSize(BITMAP_VENDOR_MEMORY_CACHE_SIZE)
-						.imageDecoder(new ImageDecoder(false))
-						.diskCacheFileNameGenerator(new Md5FileNameGenerator())
-						.tasksProcessingOrder(QueueProcessingType.LIFO).build();
-			}
+			config = new ImageLoaderConfiguration.Builder(context)
+					.threadPriority(Thread.NORM_PRIORITY - 2)
+					.diskCacheSize(50 * 1024 * 1024)
+					.writeDebugLogs()
+					.memoryCache(new WeakMemoryCache())
+					.memoryCacheSize(BITMAP_VENDOR_MEMORY_CACHE_SIZE)
+					.imageDecoder(new ImageDecoder(true))
+					.diskCacheFileNameGenerator(new Md5FileNameGenerator())
+					.tasksProcessingOrder(QueueProcessingType.LIFO).build();
 			ImageLoader.getInstance().init(config);
 		}
 	}
@@ -431,6 +419,8 @@ public class ImageLoaderUtils {
 			.cacheInMemory(true)
 			.considerExifParams(true)
 			.resetViewBeforeLoading(true)
-			.showImageOnFail(R.drawable.pic_page_picture).cacheOnDisk(true)
-			.cacheInMemory(true).build();
+			.showImageOnFail(R.drawable.pic_page_picture)
+			.cacheOnDisk(true)
+			.cacheInMemory(true)
+			.build();
 }

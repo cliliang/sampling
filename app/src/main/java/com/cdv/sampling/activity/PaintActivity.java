@@ -3,6 +3,7 @@ package com.cdv.sampling.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import com.cdv.sampling.SamplingApplication;
 import com.cdv.sampling.bean.AppFiles;
 import com.cdv.sampling.exception.DataFormatException;
 import com.cdv.sampling.exception.ErrorMessageFactory;
+import com.cdv.sampling.image.ImageLoaderUtils;
 import com.cdv.sampling.rxandroid.CommonSubscriber;
 import com.cdv.sampling.utils.ImageUtil;
 import com.cdv.sampling.utils.MD5Utils;
@@ -91,10 +93,10 @@ public class PaintActivity extends BaseActivity {
             }else {
                 final Intent intent = new Intent();
                 Bitmap bitmap = viewPaint.getBitmap(true);
+
                 Observable.just(bitmap).map(new Func1<Bitmap, String>() {
                     @Override
                     public String call(Bitmap bitmap) {
-
                         String imagePath = rootPath + "Paint-" + paintType + ".png";
                         boolean success = ImageUtil.saveBitmap(bitmap, imagePath, true);
                         if (!success){

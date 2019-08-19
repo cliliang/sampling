@@ -2,14 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.LH.sampling"
         minSdkVersion 14
-        targetSdkVersion 21
-        versionCode 106
-        versionName "1.0.6"
+        targetSdkVersion 28
+        versionCode 107
+        versionName "1.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,42 +22,42 @@ android {
         enabled = true
     }
 }
-  configurations.all {
-    resolutionStrategy.force 'com.android.support:support-annotations:25.4.0', 'com.android.support:support-v4:25.4.0'
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:28.0.0', 'com.android.support:support-v4:28.0.0'
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'cn.yipianfengye.android:zxing-library:2.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+    implementation 'cn.yipianfengye.android:zxing-library:2.1'
     //最新版本
 
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-    compile project(':printer')
-    compile 'com.android.support:support-v4:25.1.1'
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:design:25.1.1'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'io.reactivex:rxjava:1.1.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
-    compile 'com.squareup.retrofit2:retrofit:2.0.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
-    compile 'com.squareup.sqlbrite:sqlbrite:1.0.0'
-    compile 'cn.yipianfengye.android:zxing-library:2.1'
-    compile 'com.lht:paintview:1.1.4'
-    compile 'org.greenrobot:greendao:3.2.0'
-    compile 'com.apkfuns.xprogressdialog:xprogressdialog:1.2.0'
-    compile 'com.android.support:recyclerview-v7:25.1.1'
-    compile 'com.lzy.widget:imagepicker:+'
-    compile 'com.tencent.bugly:crashreport:latest.release'
-    testCompile 'junit:junit:4.12'
+    implementation project(':printer')
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    implementation 'io.reactivex:rxandroid:1.1.0'
+    implementation 'io.reactivex:rxjava:1.1.0'
+    implementation 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    implementation 'com.squareup.sqlbrite:sqlbrite:1.0.0'
+    implementation 'cn.yipianfengye.android:zxing-library:2.1'
+    implementation 'com.lht:paintview:1.1.4'
+    implementation 'org.greenrobot:greendao:3.2.0'
+    implementation 'com.apkfuns.xprogressdialog:xprogressdialog:1.2.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.lzy.widget:imagepicker:+'
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile files('libs/M3SDK.jar')
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation files('libs/M3SDK.jar')
 
 }

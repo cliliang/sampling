@@ -26,7 +26,7 @@ public class ImageUtil {
             FileUtils.createNewFile(path);
             FileOutputStream fos = new FileOutputStream(path);
             bos = new BufferedOutputStream(fos);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 80, bos);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 30, bos);
 
             return true;
         } catch (FileNotFoundException e) {

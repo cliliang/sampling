@@ -33,7 +33,7 @@ public class SamplingApplication extends Application{
         Context context = getApplicationContext();
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
         strategy.setBuglyLogUpload(BuildConfig.DEBUG);
-        CrashReport.initCrashReport(context, "151e580b13", BuildConfig.DEBUG, strategy);
+        CrashReport.initCrashReport(context, "85c151f67b", true, strategy);
     }
 
     public void initDBFormUser(){

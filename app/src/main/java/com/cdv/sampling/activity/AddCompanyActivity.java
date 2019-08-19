@@ -21,6 +21,7 @@ import com.cdv.sampling.utils.ListUtils;
 import com.cdv.sampling.utils.PinYinUtil;
 import com.cdv.sampling.widget.EPocketAlertDialog;
 import com.cdv.sampling.widget.InputLayout;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -68,7 +69,6 @@ public class AddCompanyActivity extends BaseActivity {
     }
 
     private ClientUnit clientUnit;
-    private String clientName = "", clientAddress = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +79,6 @@ public class AddCompanyActivity extends BaseActivity {
         setMyTitle("单位");
         clientUnit = (ClientUnit) getIntent().getSerializableExtra(EXTRA_COMPANY_BEAN);
         if (clientUnit != null) {
-            clientName = clientUnit.getName();
-            clientAddress = clientUnit.getAddress();
             inputCompanyName.setContent(clientUnit.getName());
             inputEmail.setContent(clientUnit.getEmail());
             inputAddress.setContent(clientUnit.getAddress());
@@ -125,13 +123,11 @@ public class AddCompanyActivity extends BaseActivity {
                             }
                         }
                     }
-
                     return true;
                 }
                 return false;
             }
         });
-
     }
 
     private void save() {
@@ -139,13 +135,7 @@ public class AddCompanyActivity extends BaseActivity {
             showToast("单位名称输入不正确！");
             return;
         }
-        if (clientUnit != null){
-            String name = inputCompanyName.getContent();
-            String address = inputAddress.getContent();
-            if (!clientName.equals(name) || !clientAddress.equals(address)){
-                clientUnit = new ClientUnit();
-            }
-        }else {
+        if (clientUnit == null){
             clientUnit = new ClientUnit();
         }
 
